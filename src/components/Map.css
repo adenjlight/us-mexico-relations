@@ -1,0 +1,35 @@
+.map-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.map-container svg {
+  width: 100%;
+  height: auto;
+}
+
+.region-path {
+  transition: fill 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+}
+
+.map-tooltip {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+  white-space: nowrap;
+  z-index: 1000;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  letter-spacing: 0.02em;
+}

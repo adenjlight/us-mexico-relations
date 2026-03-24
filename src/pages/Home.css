@@ -1,0 +1,73 @@
+.home {
+  min-height: 100vh;
+}
+
+/* ── About ─────────────────────────────────────── */
+.about-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #fef6f0 0%, #fde8f5 50%, #e8f0fe 100%);
+  padding: 80px 24px;
+}
+
+.about-inner {
+  max-width: 760px;
+  width: 100%;
+}
+
+.about-title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  color: #3a3a4a;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.about-divider {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #f9a8d4, #a5b4fc);
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+.about-lead {
+  font-size: 1.2rem;
+  color: #6b6b7b;
+  margin: 0 0 32px;
+  font-style: italic;
+}
+
+.about-body p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #4a4a5a;
+  margin: 0 0 1.2em;
+}
+
+/* ── Map section ────────────────────────────────── */
+.map-section {
+  background: #fafaf8;
+  padding: 80px 24px 100px;
+}
+
+.map-section-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.map-section-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: #3a3a4a;
+  margin: 0 0 12px;
+}
+
+.map-section-subtitle {
+  font-size: 1rem;
+  color: #7a7a8a;
+  margin: 0 0 48px;
+}
