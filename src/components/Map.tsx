@@ -12,6 +12,7 @@ interface Tooltip {
 export default function Map() {
   const containerRef = useRef<HTMLDivElement>(null);
   const hoveredIdRef = useRef<string | null>(null);
+  const leaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [tooltip, setTooltip] = useState<Tooltip | null>(null);
   const navigate = useNavigate();
 
@@ -36,7 +37,7 @@ export default function Map() {
           }
         }
         svg.setAttribute('width', '100%');
-        svg.removeAttribute('height');
+        svg.setAttribute('height', '100%');
         svg.style.display = 'block';
 
         // Remove stroke from all paths in the SVG to eliminate the black
@@ -45,10 +46,29 @@ export default function Map() {
           path.style.stroke = 'none';
         });
 
-        // Tag each region path with a class and data attribute
+        // Deep murky ocean color
+        const ocean = svg.getElementById('rect4961') as SVGRectElement | null;
+        if (ocean) ocean.style.fill = '#1a3a52';
+
+        // Surrounding non-Mexico lands (US, Guatemala, Belize)
+        const surroundingLand = svg.getElementById('path02') as SVGPathElement | null;
+        if (surroundingLand) surroundingLand.style.fill = '#b0a888';
+
+        // Coastal features: color + move to front of their parent so region
+        // paths always render on top (SVG paints in DOM order)
+        ['path36', 'path2811'].forEach((id) => {
+          const el = svg.getElementById(id) as SVGPathElement | null;
+          if (el) {
+            el.style.fill = '#b0a888';
+            el.parentNode?.prepend(el);
+          }
+        });
+
+        // Tag each region path and apply initial colors from regions.ts
         regions.forEach((region) => {
           const path = svg.getElementById(region.id) as SVGPathElement | null;
           if (path) {
+            path.style.fill = region.color;
             path.classList.add('region-path');
             path.setAttribute('data-region-id', region.id);
             path.style.cursor = 'pointer';
@@ -79,14 +99,22 @@ export default function Map() {
       el.parentNode?.appendChild(el);
       el.style.fill = r.hoverColor;
       el.style.filter = 'drop-shadow(0 6px 14px rgba(0,0,0,0.28))';
-      el.style.transform = 'scale(1.03)';
       el.style.transformOrigin = '50% 50%';
+      el.style.transform = 'scale(1.03)';
+    }
+  };
+
+  const cancelLeaveTimer = () => {
+    if (leaveTimerRef.current) {
+      clearTimeout(leaveTimerRef.current);
+      leaveTimerRef.current = null;
     }
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const target = (e.target as Element).closest('[data-region-id]') as SVGPathElement | null;
     if (target) {
+      cancelLeaveTimer();
       const regionId = target.getAttribute('data-region-id')!;
       const region = getRegionById(regionId);
       if (region) {
@@ -95,20 +123,22 @@ export default function Map() {
           if (hoveredIdRef.current) resetRegion(hoveredIdRef.current);
           hoveredIdRef.current = regionId;
           applyHover(regionId);
-        } else {
-          setTooltip({ x: e.clientX, y: e.clientY, name: region.name });
         }
       }
     } else {
-      if (hoveredIdRef.current) {
-        resetRegion(hoveredIdRef.current);
-        hoveredIdRef.current = null;
+      if (hoveredIdRef.current && !leaveTimerRef.current) {
+        leaveTimerRef.current = setTimeout(() => {
+          if (hoveredIdRef.current) resetRegion(hoveredIdRef.current);
+          hoveredIdRef.current = null;
+          setTooltip(null);
+          leaveTimerRef.current = null;
+        }, 60);
       }
-      setTooltip(null);
     }
   };
 
   const handleMouseLeave = () => {
+    cancelLeaveTimer();
     if (hoveredIdRef.current) {
       resetRegion(hoveredIdRef.current);
       hoveredIdRef.current = null;
