@@ -21,6 +21,11 @@
   display: block;
 }
 
+@keyframes regionDrop {
+  from { opacity: 0; transform: translateY(-28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .region-path {
   transition: fill 0.2s ease, filter 0.2s ease, transform 0.2s ease;
 }

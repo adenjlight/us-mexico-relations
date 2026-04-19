@@ -65,19 +65,42 @@ export default function Map() {
         });
 
         // Tag each region path and apply initial colors from regions.ts
-        regions.forEach((region) => {
+        regions.forEach((region, i) => {
           const path = svg.getElementById(region.id) as SVGPathElement | null;
           if (path) {
             path.style.fill = region.color;
             path.classList.add('region-path');
             path.setAttribute('data-region-id', region.id);
             path.style.cursor = 'pointer';
-            path.style.transition = 'filter 0.2s ease, transform 0.2s ease, fill 0.15s ease';
+            path.style.opacity = '0';
+            path.style.animation = `regionDrop 0.7s ease forwards`;
+            path.style.animationDelay = `${i * 0.12}s`;
+            path.style.animationPlayState = 'paused';
           }
         });
 
         container.innerHTML = '';
         container.appendChild(svg);
+
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              regions.forEach((region) => {
+                const path = container.querySelector(`#${region.id}`) as SVGPathElement | null;
+                if (!path) return;
+                path.style.animationPlayState = 'running';
+                path.addEventListener('animationend', () => {
+                  path.style.animation = '';
+                  path.style.opacity = '1';
+                  path.style.transform = 'translateY(0)';
+                }, { once: true });
+              });
+              observer.disconnect();
+            }
+          },
+          { threshold: 0.3 }
+        );
+        observer.observe(container);
       });
   }, []);
 
@@ -87,7 +110,7 @@ export default function Map() {
     if (el && r) {
       el.style.fill = r.color;
       el.style.filter = '';
-      el.style.transform = '';
+      el.style.transform = 'translateY(0)';
     }
   };
 

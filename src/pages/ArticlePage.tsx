@@ -1,50 +1,142 @@
+import { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getRegionBySlug } from '../data/regions';
 import './ArticlePage.css';
 
-const ARTICLE_BODY = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+const ARTICLES: Record<string, { title: string; date: string; lede: string; readTime: string }> = {
+  'article-1': {
+    title: 'Placeholder Article Title One',
+    date: 'March 2025',
+    lede: 'A placeholder lede summarizing the key argument of this article — the compelling hook that draws the reader into the full piece.',
+    readTime: '8 min read',
+  },
+  'article-2': {
+    title: 'Placeholder Article Title Two',
+    date: 'February 2025',
+    lede: 'A placeholder lede for the second article, offering a brief and evocative summary of what follows in the body text.',
+    readTime: '11 min read',
+  },
+  'article-3': {
+    title: 'Placeholder Article Title Three',
+    date: 'January 2025',
+    lede: 'A placeholder lede for the third article — context, stakes, and a reason to keep reading all condensed into a sentence or two.',
+    readTime: '6 min read',
+  },
+};
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
-
-Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis.
-
-Fusce fermentum. Nullam varius nulla nec sapien. Proin euismod, urna vel ultricies fringilla, est libero fermentum felis, sit amet malesuada purus lorem ut nunc. In nec felis. Donec ultrices urna. Nullam vulputate diam nec turpis. Sed consequat augue eget diam.`;
+const BODY_PARAGRAPHS = [
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+  'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.',
+  'Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis.',
+  'Fusce fermentum. Nullam varius nulla nec sapien. Proin euismod, urna vel ultricies fringilla, est libero fermentum felis, sit amet malesuada purus lorem ut nunc. In nec felis. Donec ultrices urna. Nullam vulputate diam nec turpis. Sed consequat augue eget diam. Sed tincidunt.',
+];
 
 export default function ArticlePage() {
   const { regionSlug, articleId } = useParams<{ regionSlug: string; articleId: string }>();
   const region = getRegionBySlug(regionSlug ?? '');
+  const progressRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
-  const articleNumber = articleId?.replace('article-', '') ?? '1';
+  const meta = ARTICLES[articleId ?? ''] ?? ARTICLES['article-1'];
+
+  const articleIds = Object.keys(ARTICLES);
+  const currentIndex = articleIds.indexOf(articleId ?? '');
+  const nextId = articleIds[currentIndex + 1];
+  const nextMeta = nextId ? ARTICLES[nextId] : null;
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (progressRef.current) {
+        progressRef.current.style.width = `${(scrollTop / docHeight) * 100}%`;
+      }
+      if (navRef.current) {
+        navRef.current.classList.toggle('scrolled', scrollTop > 20);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <div className="article-page">
-      <div className="article-header">
-        <Link to={`/region/${regionSlug}`} className="back-btn">
-          ← Back to {region?.name ?? 'Region'}
+    <div className="ap-page">
+      <div className="ap-progress" ref={progressRef} />
+
+      <nav className="ap-nav" ref={navRef}>
+        <Link to="/" className="ap-nav-logo">US<span>–</span>MX</Link>
+        <ul className="ap-nav-links">
+          <li><Link to="/">Overview</Link></li>
+          <li><Link to="/#map">Regions</Link></li>
+        </ul>
+      </nav>
+
+      <header className="ap-header">
+        <Link to={`/region/${regionSlug}`} className="ap-back-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
+          Back to {region?.name ?? 'Region'}
         </Link>
+
+        <div className="ap-meta-bar">
+          <span className="ap-region-badge">{region?.name ?? 'Region'}</span>
+          <span className="ap-date">{meta.date}</span>
+          <span className="ap-read-time">{meta.readTime}</span>
+        </div>
+
+        <h1>{meta.title}</h1>
+        <p className="ap-lede">{meta.lede}</p>
+      </header>
+
+      <div className="ap-body">
+        <p className="drop-cap">{BODY_PARAGRAPHS[0]}</p>
+        <p>{BODY_PARAGRAPHS[1]}</p>
+
+        <div className="ap-image">
+          <span>Image placeholder</span>
+        </div>
+
+        <h2>Section heading</h2>
+        <p>{BODY_PARAGRAPHS[2]}</p>
+
+        <div className="ap-pull-stat">
+          <div className="ap-pull-number">$5.9B</div>
+          <div className="ap-pull-label">Placeholder statistic label</div>
+        </div>
+
+        <blockquote>
+          <p>Placeholder pull quote — a striking sentence from the article that encapsulates a key insight or argument.</p>
+          <cite>— Source Name, Institution</cite>
+        </blockquote>
+
+        <h2>Second section heading</h2>
+        <p>{BODY_PARAGRAPHS[3]}</p>
+        <p>{BODY_PARAGRAPHS[1]}</p>
       </div>
 
-      <article className="article-body">
-        <div className="article-meta">
-          <span
-            className="article-region-tag"
-            style={{ background: region?.hoverColor ?? '#e0e0e0' }}
-          >
-            {region?.name ?? 'Region'}
-          </span>
-          <span className="article-date-meta">March 2025</span>
+      <div className="ap-end">
+        <div className="ap-end-divider">
+          <div className="ap-line" />
+          <div className="ap-dot" /><div className="ap-dot" /><div className="ap-dot" />
+          <div className="ap-line" />
         </div>
 
-        <h1 className="article-title">Placeholder Article Title {articleNumber}</h1>
+        {nextMeta && (
+          <Link to={`/region/${regionSlug}/article/${nextId}`} className="ap-next">
+            <div>
+              <div className="ap-next-label">Next article</div>
+              <div className="ap-next-title">{nextMeta.title}</div>
+            </div>
+            <div className="ap-next-arrow">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </div>
+          </Link>
+        )}
+      </div>
 
-        <div className="article-content">
-          {ARTICLE_BODY.split('\n\n').map((para, i) => (
-            <p key={i}>{para}</p>
-          ))}
-        </div>
-      </article>
+      <footer className="ap-footer">
+        <div className="ap-footer-logo">US<span>–</span>Mexico Relations</div>
+        <p>A research project exploring history, culture, and diplomacy.</p>
+      </footer>
     </div>
   );
 }

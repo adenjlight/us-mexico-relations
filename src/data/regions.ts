@@ -1,9 +1,10 @@
 export interface Region {
-  id: string;       // SVG path ID
-  slug: string;     // URL slug
-  name: string;     // Display name
-  color: string;    // Original SVG fill color
-  hoverColor: string; // Pastel highlight color on hover
+  id: string;
+  slug: string;
+  name: string;
+  color: string;
+  hoverColor: string;
+  states: string[];
 }
 
 export const regions: Region[] = [
@@ -13,6 +14,7 @@ export const regions: Region[] = [
     name: 'North West',
     color: '#b07030',
     hoverColor: '#d09050',
+    states: ['Baja California', 'Baja California Sur', 'Sonora', 'Sinaloa'],
   },
   {
     id: 'path21',
@@ -20,6 +22,7 @@ export const regions: Region[] = [
     name: 'North East',
     color: '#f0c020',
     hoverColor: '#f5d860',
+    states: ['Tamaulipas', 'Nuevo León', 'Coahuila'],
   },
   {
     id: 'path33',
@@ -27,6 +30,7 @@ export const regions: Region[] = [
     name: 'West',
     color: '#9a9f58',
     hoverColor: '#bcbf80',
+    states: ['Jalisco', 'Nayarit', 'Colima', 'Michoacán'],
   },
   {
     id: 'path27',
@@ -34,6 +38,7 @@ export const regions: Region[] = [
     name: 'North Central',
     color: '#1e7878',
     hoverColor: '#40a0a0',
+    states: ['Chihuahua', 'Durango', 'Zacatecas', 'San Luis Potosí'],
   },
   {
     id: 'path09',
@@ -41,6 +46,7 @@ export const regions: Region[] = [
     name: 'East',
     color: '#30b8d8',
     hoverColor: '#70d0e8',
+    states: ['Veracruz', 'Tabasco', 'Hidalgo'],
   },
   {
     id: 'path12',
@@ -48,6 +54,7 @@ export const regions: Region[] = [
     name: 'Central',
     color: '#a04020',
     hoverColor: '#c86840',
+    states: ['Mexico City', 'State of Mexico', 'Puebla', 'Tlaxcala', 'Morelos', 'Querétaro'],
   },
   {
     id: 'path05',
@@ -55,6 +62,7 @@ export const regions: Region[] = [
     name: 'South West',
     color: '#006848',
     hoverColor: '#20986a',
+    states: ['Guerrero', 'Oaxaca', 'Chiapas'],
   },
   {
     id: 'path2809',
@@ -62,6 +70,7 @@ export const regions: Region[] = [
     name: 'South East',
     color: '#cc1020',
     hoverColor: '#e04458',
+    states: ['Yucatán', 'Campeche', 'Quintana Roo'],
   },
 ];
 

@@ -15,8 +15,6 @@ Phasellus at dui in ligula mollis ultricies. Integer placerat tristique nisl. Pr
 export default function Home() {
   const heroInnerRef = useRef<HTMLDivElement>(null);
   const bodyInnerRef = useRef<HTMLDivElement>(null);
-  const mapSectionRef = useRef<HTMLElement>(null);
-  const mapRevealRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const update = () => {
@@ -37,15 +35,6 @@ export default function Home() {
         bodyInnerRef.current.style.opacity = String(Math.min(fadeIn, fadeOut));
       }
 
-      // Map reveal: only starts after the section is fully in view (rect.top <= 0),
-      // then reveals top-to-bottom over the remaining 80vh of scroll space
-      if (mapRevealRef.current && mapSectionRef.current) {
-        const rect = mapSectionRef.current.getBoundingClientRect();
-        const raw = Math.min(1, Math.max(0, -rect.top / (vh * 0.8)));
-        const clipBottom = (1 - raw) * 100;
-        mapRevealRef.current.style.clipPath = `inset(0 0 ${clipBottom}% 0)`;
-        mapRevealRef.current.style.setProperty('--reveal', `${raw * 100}%`);
-      }
     };
 
     update();
@@ -57,11 +46,16 @@ export default function Home() {
     <div className="home">
       <section className="hero-section">
         <div className="hero-inner" ref={heroInnerRef}>
-          <h1 className="about-title">US–Mexico Relations</h1>
-          <div className="about-divider" />
-          <p className="about-lead">
-            Exploring the history, culture, and diplomacy between two neighboring nations.
+          <div className="hero-eyebrow">History · Culture · Diplomacy</div>
+          <h1 className="hero-title">US–Mexico <em>Relations</em></h1>
+          <div className="hero-divider" />
+          <p className="hero-sub">
+            Exploring the shared history, vibrant culture, and evolving diplomacy between two neighboring nations.
           </p>
+        </div>
+        <div className="scroll-cue">
+          <span>Scroll</span>
+          <div className="scroll-arrow" />
         </div>
       </section>
 
@@ -73,10 +67,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="map-section" id="map" ref={mapSectionRef}>
+      <section className="map-section" id="map">
         <div className="map-section-sticky">
         <div className="map-section-inner">
-          <div className="map-reveal-wrapper" ref={mapRevealRef}>
+          <div className="map-reveal-wrapper">
             <Map />
           </div>
         </div>

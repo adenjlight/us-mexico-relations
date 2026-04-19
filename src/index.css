@@ -3,17 +3,33 @@
 }
 
 :root {
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --navy:            #0c1a2e;
+  --navy-mid:        #152640;
+  --navy-light:      #1e3355;
+  --gold:            #d4a853;
+  --gold-light:      #e8c97a;
+  --gold-dim:        #a07d35;
+  --terracotta:      #c4654a;
+  --terracotta-light:#e08a70;
+  --sage:            #6b9a7d;
+  --sage-light:      #8fbfa0;
+  --cream:           #f5f0e8;
+  --cream-dark:      #e8e0d2;
+  --text-light:      #c8cdd6;
+  --text-muted:      #8a95a8;
+
+  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  color: #2a2a3a;
-  background: #fafaf8;
+  color: var(--cream);
+  background: var(--navy);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 #root {
