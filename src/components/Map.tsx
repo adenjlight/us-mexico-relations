@@ -14,7 +14,6 @@ export default function Map() {
   const hoveredIdRef = useRef<string | null>(null);
   const leaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const readyRef = useRef(false);
-  const animDoneCountRef = useRef(0);
   const [tooltip, setTooltip] = useState<Tooltip | null>(null);
   const navigate = useNavigate();
 
@@ -95,10 +94,9 @@ export default function Map() {
                   path.style.animation = '';
                   path.style.opacity = '1';
                   path.style.transform = 'translateY(0)';
-                  animDoneCountRef.current += 1;
-                  if (animDoneCountRef.current >= regions.length) readyRef.current = true;
                 }, { once: true });
               });
+              setTimeout(() => { readyRef.current = true; }, 2200);
               observer.disconnect();
             }
           },
@@ -139,7 +137,6 @@ export default function Map() {
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!readyRef.current) return;
     const target = (e.target as Element).closest('[data-region-id]') as SVGPathElement | null;
     if (target) {
       cancelLeaveTimer();
@@ -147,7 +144,7 @@ export default function Map() {
       const region = getRegionById(regionId);
       if (region) {
         setTooltip({ x: e.clientX, y: e.clientY, name: region.name });
-        if (hoveredIdRef.current !== regionId) {
+        if (readyRef.current && hoveredIdRef.current !== regionId) {
           if (hoveredIdRef.current) resetRegion(hoveredIdRef.current);
           hoveredIdRef.current = regionId;
           applyHover(regionId);
