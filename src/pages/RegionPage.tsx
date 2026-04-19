@@ -75,8 +75,6 @@ export default function RegionPage() {
       <nav className="rp-nav">
         <Link to="/" className="rp-nav-logo">US<span>–</span>MX</Link>
         <ul className="rp-nav-links">
-          <li><Link to="/">Overview</Link></li>
-          <li><Link to="/#map">Regions</Link></li>
         </ul>
       </nav>
 
@@ -86,7 +84,7 @@ export default function RegionPage() {
           Back to all regions
         </Link>
         <div className="rp-eyebrow">Region</div>
-        <h1 className="rp-title">The <em>{region.name}</em></h1>
+        <h1 className="rp-title"><em>{region.name}</em></h1>
         <p className="rp-description">
           Placeholder region description for {region.name}. Articles and detailed content will be added here covering history, culture, and cross-border dynamics.
         </p>

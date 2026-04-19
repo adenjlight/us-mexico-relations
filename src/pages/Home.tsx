@@ -46,8 +46,7 @@ export default function Home() {
     <div className="home">
       <section className="hero-section">
         <div className="hero-inner" ref={heroInnerRef}>
-          <div className="hero-eyebrow">History · Culture · Diplomacy</div>
-          <h1 className="hero-title">US–Mexico <em>Relations</em></h1>
+          <h1 className="hero-title">Mapping <em>Mexico</em></h1>
           <div className="hero-divider" />
           <p className="hero-sub">
             Exploring the shared history, vibrant culture, and evolving diplomacy between two neighboring nations.
