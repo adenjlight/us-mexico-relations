@@ -31,12 +31,12 @@
   align-items: center;
   background: rgba(245,240,232,0.92);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(12,26,46,0.06);
+  border-bottom: 1px solid rgba(26,58,82,0.06);
   transition: box-shadow 0.3s;
 }
 
 .ap-nav.scrolled {
-  box-shadow: 0 1px 20px rgba(12,26,46,0.06);
+  box-shadow: 0 1px 20px rgba(26,58,82,0.06);
 }
 
 .ap-nav-logo {
@@ -145,7 +145,7 @@
   color: #555;
   font-style: italic;
   padding-bottom: 2.5rem;
-  border-bottom: 1px solid rgba(12,26,46,0.08);
+  border-bottom: 1px solid rgba(26,58,82,0.08);
   margin: 0;
 }
 
@@ -249,8 +249,8 @@
   margin: 3rem 0;
   padding: 2.5rem;
   text-align: center;
-  border-top: 1px solid rgba(12,26,46,0.06);
-  border-bottom: 1px solid rgba(12,26,46,0.06);
+  border-top: 1px solid rgba(26,58,82,0.06);
+  border-bottom: 1px solid rgba(26,58,82,0.06);
 }
 
 .ap-pull-number {
@@ -294,7 +294,7 @@
 
 .ap-line {
   width: 40px; height: 1px;
-  background: rgba(12,26,46,0.1);
+  background: rgba(26,58,82,0.1);
 }
 
 /* Next article CTA */

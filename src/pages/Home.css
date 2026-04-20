@@ -2,6 +2,16 @@
   min-height: 100vh;
 }
 
+/* ── Fixed map background ───────────────────────── */
+.map-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--navy);
+  padding: 5vh 6vw;
+  overflow: hidden;
+}
+
 /* ── Hero ───────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -13,32 +23,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--navy);
+  /* Semi-transparent overlay so map is visible behind the title */
+  background: rgba(26, 58, 82, 0.62);
   padding: 0 24px;
   position: relative;
+  z-index: 1;
   overflow: hidden;
-}
-
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 60%;
-  height: 60%;
-  background: radial-gradient(ellipse, rgba(212,168,83,0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-section::after {
-  content: '';
-  position: absolute;
-  bottom: -10%;
-  right: -10%;
-  width: 50%;
-  height: 50%;
-  background: radial-gradient(ellipse, rgba(196,101,74,0.05) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .hero-inner {
@@ -49,17 +39,6 @@
   z-index: 1;
 }
 
-.hero-eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 500;
-  margin-bottom: 2rem;
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards 0.2s;
-}
-
 .hero-title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(3rem, 8vw, 7rem);
@@ -67,7 +46,7 @@
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--cream);
-  margin: 0 0 0;
+  margin: 0;
   opacity: 0;
   animation: fadeUp 1s ease forwards 0.4s;
 }
@@ -143,8 +122,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--navy);
+  background: rgba(26, 58, 82, 0.62);
   padding: 80px 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .body-inner {
@@ -160,35 +141,11 @@
   margin: 0 0 1.2em;
 }
 
-/* ── Map section ────────────────────────────────── */
+/* ── Map spacer — transparent, lets fixed map show through ── */
 .map-section {
-  background: var(--navy);
-  height: 180vh; /* extra scroll space so the reveal happens after section is in view */
-}
-
-.map-section-sticky {
-  position: sticky;
-  top: 0;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.map-section-inner {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  text-align: center;
-  min-height: 0;
-}
-
-.map-reveal-wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
   position: relative;
+  z-index: 1;
+  background: transparent;
+  pointer-events: none;
 }
-

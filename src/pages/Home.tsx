@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Map from '../components/Map';
 import './Home.css';
 
@@ -15,19 +15,21 @@ Phasellus at dui in ligula mollis ultricies. Integer placerat tristique nisl. Pr
 export default function Home() {
   const heroInnerRef = useRef<HTMLDivElement>(null);
   const bodyInnerRef = useRef<HTMLDivElement>(null);
+  const bodySectionRef = useRef<HTMLDivElement>(null);
+  const [mapInteractive, setMapInteractive] = useState(false);
 
   useEffect(() => {
     const update = () => {
       const scrollY = window.scrollY;
       const vh = window.innerHeight;
 
-      // Hero: fade out slowly over 2× the viewport height of scroll
-      if (heroInnerRef.current && scrollY > 0) {
-        const op = Math.max(0, 1 - scrollY / (vh * 2.0));
+      // Hero: fade out over 1.5× viewport height of scroll
+      if (heroInnerRef.current) {
+        const op = Math.max(0, 1 - scrollY / (vh * 1.5));
         heroInnerRef.current.style.opacity = String(op);
       }
 
-      // Body: fade in over 90% of vh as it enters, fade out over 90% of vh as it exits
+      // Body: fade in as it enters, fade out as it exits
       if (bodyInnerRef.current) {
         const rect = bodyInnerRef.current.getBoundingClientRect();
         const fadeIn = Math.min(1, Math.max(0, (vh - rect.top) / (vh * 0.9)));
@@ -35,6 +37,11 @@ export default function Home() {
         bodyInnerRef.current.style.opacity = String(Math.min(fadeIn, fadeOut));
       }
 
+      // Enable map interactivity only after body section is fully scrolled past
+      if (bodySectionRef.current) {
+        const rect = bodySectionRef.current.getBoundingClientRect();
+        setMapInteractive(rect.bottom <= 0);
+      }
     };
 
     update();
@@ -44,6 +51,11 @@ export default function Home() {
 
   return (
     <div className="home">
+      {/* Fixed map — always in background, interactive only after body exits viewport */}
+      <div className="map-bg">
+        <Map interactive={mapInteractive} />
+      </div>
+
       <section className="hero-section">
         <div className="hero-inner" ref={heroInnerRef}>
           <h1 className="hero-title">Mapping <em>Mexico</em></h1>
@@ -58,7 +70,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="body-section">
+      <section className="body-section" ref={bodySectionRef}>
         <div className="body-inner" ref={bodyInnerRef}>
           {LOREM.split('\n\n').map((para, i) => (
             <p key={i}>{para}</p>
@@ -66,15 +78,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="map-section" id="map">
-        <div className="map-section-sticky">
-        <div className="map-section-inner">
-          <div className="map-reveal-wrapper">
-            <Map />
-          </div>
-        </div>
-        </div>
-      </section>
+      {/* Transparent spacer — map shows through and is interactive here */}
+      <section className="map-section" id="map" />
     </div>
   );
 }

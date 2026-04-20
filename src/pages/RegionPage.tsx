@@ -10,8 +10,6 @@ const PLACEHOLDER_ARTICLES = [
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud.',
     date: 'March 2025',
     readTime: '8 min read',
-    tagColor: 'gold',
-    pattern: 'pattern-1',
     num: '01',
   },
   {
@@ -20,8 +18,6 @@ const PLACEHOLDER_ARTICLES = [
     excerpt: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam feugiat vitae ultricies eget tempor sit amet.',
     date: 'February 2025',
     readTime: '11 min read',
-    tagColor: 'terracotta',
-    pattern: 'pattern-2',
     num: '02',
   },
   {
@@ -30,8 +26,6 @@ const PLACEHOLDER_ARTICLES = [
     excerpt: 'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius turpis molestie dictum ultricies lacus nunc ultrices odio vel convallis purus mauris.',
     date: 'January 2025',
     readTime: '6 min read',
-    tagColor: 'sage',
-    pattern: 'pattern-3',
     num: '03',
   },
 ];
@@ -44,7 +38,7 @@ export default function RegionPage() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   useEffect(() => {
-    const cards = listRef.current?.querySelectorAll('.article-card-lg');
+    const cards = listRef.current?.querySelectorAll('.rp-article-card');
     if (!cards) return;
     const observer = new IntersectionObserver(
       (entries) => {
@@ -52,10 +46,10 @@ export default function RegionPage() {
           if (entry.isIntersecting) entry.target.classList.add('visible');
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
     cards.forEach((card, i) => {
-      (card as HTMLElement).style.transitionDelay = `${i * 0.15}s`;
+      (card as HTMLElement).style.transitionDelay = `${i * 0.12}s`;
       observer.observe(card);
     });
     return () => observer.disconnect();
@@ -71,59 +65,76 @@ export default function RegionPage() {
   }
 
   return (
-    <div className="region-page">
-      <nav className="rp-nav">
-        <Link to="/" className="rp-nav-logo">US<span>–</span>MX</Link>
-        <ul className="rp-nav-links">
-        </ul>
-      </nav>
-
+    <div
+      className="region-page"
+      style={{ '--region-color': region.color } as React.CSSProperties}
+    >
       <section className="rp-hero">
-        <Link to="/#map" className="rp-back-link">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
-          Back to all regions
-        </Link>
-        <div className="rp-eyebrow">Region</div>
-        <h1 className="rp-title"><em>{region.name}</em></h1>
-        <p className="rp-description">
-          Placeholder region description for {region.name}. Articles and detailed content will be added here covering history, culture, and cross-border dynamics.
-        </p>
-        <div className="rp-meta">
-          <div className="rp-meta-item">
-            <div className="rp-meta-label">States</div>
-            <div className="rp-meta-states">{region.states.join(' · ')}</div>
+        <div className="rp-hero-content">
+          <Link to="/#map" className="rp-back-link">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
+            Back to all regions
+          </Link>
+
+          <div className="rp-eyebrow">Region</div>
+
+          <h1 className="rp-title">
+            <span className="rp-title-the">The </span>
+            <span className="rp-title-name">{region.name}</span>
+          </h1>
+
+          <p className="rp-description">{region.description}</p>
+
+          <div className="rp-divider" />
+
+          <div className="rp-stats">
+            <div className="rp-stat">
+              <span className="rp-stat-label">States Covered</span>
+              <span className="rp-stat-states">{region.states.join(', ')}</span>
+            </div>
+            <div className="rp-stat">
+              <span className="rp-stat-value">{region.population}</span>
+              <span className="rp-stat-label">Population</span>
+            </div>
           </div>
+        </div>
+
+        <div className="rp-hero-image">
+          <img src={region.image} alt={region.imageAlt} />
+          <a
+            className="rp-image-credit"
+            href={region.imageCreditUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {region.imageCredit}
+          </a>
         </div>
       </section>
 
-      <div className="rp-divider"><hr /></div>
-
       <section className="rp-articles">
-        <div className="rp-articles-label">Articles</div>
-        <h2 className="rp-articles-heading">From the {region.name}</h2>
+        <div className="rp-articles-header">
+          <span className="rp-articles-label">Articles</span>
+          <h2 className="rp-articles-heading">From the {region.name}</h2>
+        </div>
 
-        <div className="article-list" ref={listRef}>
+        <div className="rp-article-list" ref={listRef}>
           {PLACEHOLDER_ARTICLES.map((article) => (
             <Link
               key={article.id}
               to={`/region/${region.slug}/article/${article.id}`}
-              className="article-card-lg"
+              className="rp-article-card"
             >
-              <div className={`card-visual ${article.pattern}`}>
-                <div className="card-number">{article.num}</div>
+              <span className="rp-card-num">{article.num}</span>
+              <div className="rp-card-body">
+                <h3 className="rp-card-title">{article.title}</h3>
+                <p className="rp-card-excerpt">{article.excerpt}</p>
               </div>
-              <div className="card-content">
-                <div className="card-tag">
-                  <div className={`card-tag-dot ${article.tagColor}`} />
-                  <span className="card-tag-text">{article.date}</span>
-                </div>
-                <h3 className="card-title-lg">{article.title}</h3>
-                <p className="card-excerpt-lg">{article.excerpt}</p>
-                <div className="card-footer-row">
-                  <span className="card-read-time">{article.readTime}</span>
-                  <div className="card-arrow">
-                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                  </div>
+              <div className="rp-card-meta">
+                <span className="rp-card-date">{article.date}</span>
+                <span className="rp-card-time">{article.readTime}</span>
+                <div className="rp-card-arrow">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
                 </div>
               </div>
             </Link>
@@ -132,8 +143,8 @@ export default function RegionPage() {
       </section>
 
       <footer className="rp-footer">
-        <div className="rp-footer-logo">US<span>–</span>Mexico Relations</div>
-        <p>A research project exploring history, culture, and diplomacy.</p>
+        <div className="rp-footer-logo">PSC 3500 US–Mexico Relations</div>
+        <p>Spring 2026</p>
       </footer>
     </div>
   );

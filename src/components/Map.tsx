@@ -9,11 +9,13 @@ interface Tooltip {
   name: string;
 }
 
-export default function Map() {
+export default function Map({ interactive = false }: { interactive?: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const hoveredIdRef = useRef<string | null>(null);
   const leaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const readyRef = useRef(false);
+  const animationDoneRef = useRef(false);
+  const interactiveRef = useRef(interactive);
   const [tooltip, setTooltip] = useState<Tooltip | null>(null);
   const navigate = useNavigate();
 
@@ -39,6 +41,7 @@ export default function Map() {
         }
         svg.setAttribute('width', '100%');
         svg.setAttribute('height', '100%');
+        svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
         svg.style.display = 'block';
 
         // Remove stroke from all paths in the SVG to eliminate the black
@@ -74,8 +77,8 @@ export default function Map() {
             path.setAttribute('data-region-id', region.id);
             path.style.cursor = 'pointer';
             path.style.opacity = '0';
-            path.style.animation = `regionDrop 0.7s ease forwards`;
-            path.style.animationDelay = `${i * 0.12}s`;
+            path.style.animation = `regionDrop 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards`;
+            path.style.animationDelay = `${i * 0.22}s`;
             path.style.animationPlayState = 'paused';
           }
         });
@@ -96,7 +99,11 @@ export default function Map() {
                   path.style.transform = 'translateY(0)';
                 }, { once: true });
               });
-              setTimeout(() => { readyRef.current = true; }, 2200);
+              // 8 regions × 0.22s stagger + 1.2s duration ≈ 3s total
+              setTimeout(() => {
+                animationDoneRef.current = true;
+                if (interactiveRef.current) readyRef.current = true;
+              }, 3200);
               observer.disconnect();
             }
           },
@@ -105,6 +112,22 @@ export default function Map() {
         observer.observe(container);
       });
   }, []);
+
+  useEffect(() => {
+    interactiveRef.current = interactive;
+    readyRef.current = interactive && animationDoneRef.current;
+    if (!interactive) {
+      cancelLeaveTimer();
+      if (hoveredIdRef.current) {
+        const r = regions.find((reg) => reg.id === hoveredIdRef.current);
+        const el = containerRef.current?.querySelector(`#${hoveredIdRef.current}`) as SVGPathElement | null;
+        if (el && r) { el.style.fill = r.color; el.style.filter = ''; el.style.transform = 'translateY(0)'; }
+        hoveredIdRef.current = null;
+      }
+      setTooltip(null);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [interactive]);
 
   const resetRegion = (regionId: string) => {
     const r = regions.find((reg) => reg.id === regionId);

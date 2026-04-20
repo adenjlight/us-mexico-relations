@@ -134,8 +134,8 @@ export default function ArticlePage() {
       </div>
 
       <footer className="ap-footer">
-        <div className="ap-footer-logo">US<span>–</span>Mexico Relations</div>
-        <p>A research project exploring history, culture, and diplomacy.</p>
+        <div className="ap-footer-logo">PSC 3500 US–Mexico Relations</div>
+        <p>Spring 2026</p>
       </footer>
     </div>
   );
