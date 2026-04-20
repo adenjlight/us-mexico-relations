@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getRegionBySlug } from '../data/regions';
+import { getPodcastBySlug } from '../data/podcasts';
 import './RegionPage.css';
 
 const PLACEHOLDER_ARTICLES = [
@@ -19,14 +20,6 @@ const PLACEHOLDER_ARTICLES = [
     date: 'February 2025',
     readTime: '11 min read',
     num: '02',
-  },
-  {
-    id: 'article-3',
-    title: 'Placeholder Article Title Three',
-    excerpt: 'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius turpis molestie dictum ultricies lacus nunc ultrices odio vel convallis purus mauris.',
-    date: 'January 2025',
-    readTime: '6 min read',
-    num: '03',
   },
 ];
 
@@ -139,6 +132,33 @@ export default function RegionPage() {
               </div>
             </Link>
           ))}
+
+          {(() => {
+            const podcast = getPodcastBySlug(region.slug);
+            if (!podcast) return null;
+            return (
+              <Link
+                to={`/region/${region.slug}/podcast`}
+                className="rp-article-card rp-podcast-card"
+              >
+                <span className="rp-card-num">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zm-1 3a1 1 0 0 1 2 0v7a1 1 0 0 1-2 0V5zm-3 7a4 4 0 0 0 8 0h1a5 5 0 0 1-4.5 4.97V19h-1v-2.03A5 5 0 0 1 3 12H4z"/></svg>
+                </span>
+                <div className="rp-card-body">
+                  <span className="rp-podcast-badge">Podcast</span>
+                  <h3 className="rp-card-title">{podcast.title}</h3>
+                  <p className="rp-card-excerpt">{podcast.description}</p>
+                </div>
+                <div className="rp-card-meta">
+                  <span className="rp-card-date">{podcast.date}</span>
+                  <span className="rp-card-time">{podcast.duration}</span>
+                  <div className="rp-card-arrow">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                  </div>
+                </div>
+              </Link>
+            );
+          })()}
         </div>
       </section>
 

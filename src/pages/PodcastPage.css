@@ -1,0 +1,297 @@
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.08); }
+}
+
+.pp-page {
+  min-height: 100vh;
+  background: var(--navy);
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+}
+
+.pp-not-found {
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 80px 24px;
+}
+
+/* ── Nav ──────────────────────────────────────────── */
+.pp-nav {
+  padding: 1.5rem 8vw;
+  display: flex;
+  align-items: center;
+}
+
+.pp-nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.pp-nav-logo span { color: var(--region-color); }
+
+/* ── Header ───────────────────────────────────────── */
+.pp-header {
+  padding: 2rem 8vw 3rem;
+  max-width: 760px;
+}
+
+.pp-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.5s ease forwards 0.05s;
+}
+
+.pp-back-link:hover { color: var(--cream); }
+
+.pp-back-link svg {
+  width: 14px; height: 14px;
+  transition: transform 0.2s;
+}
+
+.pp-back-link:hover svg { transform: translateX(-3px); }
+
+.pp-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.5s ease forwards 0.15s;
+}
+
+.pp-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--region-color);
+  padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+}
+
+.pp-type-badge svg { width: 10px; height: 10px; }
+
+.pp-region-badge {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.pp-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.pp-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin: 0 0 1.25rem;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.25s;
+}
+
+.pp-description {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  font-weight: 300;
+  margin: 0;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.4s;
+}
+
+/* ── Player ───────────────────────────────────────── */
+.pp-player-wrap {
+  padding: 2rem 8vw 4rem;
+  flex: 1;
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.5s;
+}
+
+.pp-player {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  max-width: 680px;
+}
+
+.pp-play-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--region-color);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--navy);
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.pp-play-btn:hover { transform: scale(1.06); }
+.pp-play-btn:active { transform: scale(0.97); }
+
+.pp-play-btn svg { width: 28px; height: 28px; }
+
+.pp-controls {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pp-progress-wrap { width: 100%; }
+
+/* Custom range slider */
+.pp-scrubber {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    var(--region-color) 0%,
+    var(--region-color) var(--progress),
+    rgba(255,255,255,0.12) var(--progress),
+    rgba(255,255,255,0.12) 100%
+  );
+  cursor: pointer;
+  outline: none;
+}
+
+.pp-scrubber::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--region-color);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.pp-scrubber:hover::-webkit-slider-thumb { transform: scale(1.2); }
+
+.pp-scrubber::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--region-color);
+  border: none;
+  cursor: pointer;
+}
+
+.pp-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Coming soon state ────────────────────────────── */
+.pp-coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px dashed rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 480px;
+}
+
+.pp-mic-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--region-color);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.pp-mic-icon svg { width: 26px; height: 26px; }
+
+.pp-coming-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin: 0;
+}
+
+.pp-coming-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ── Footer ───────────────────────────────────────── */
+.pp-footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 3rem 8vw;
+  text-align: center;
+}
+
+.pp-footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.pp-footer p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 600px) {
+  .pp-header { padding: 1.5rem 1.5rem 2rem; }
+  .pp-player-wrap { padding: 1.5rem 1.5rem 3rem; }
+  .pp-player { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 1.5rem; }
+  .pp-play-btn { width: 56px; height: 56px; }
+}

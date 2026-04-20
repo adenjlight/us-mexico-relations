@@ -268,7 +268,32 @@
   flex-shrink: 0;
 }
 
+.rp-podcast-card .rp-card-num {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+}
+
+.rp-podcast-card .rp-card-num svg {
+  width: 2rem;
+  height: 2rem;
+}
+
 .rp-article-card:hover .rp-card-num { opacity: 1; }
+
+.rp-podcast-badge {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--region-color);
+  padding: 0.15rem 0.55rem;
+  border-radius: 100px;
+  margin-bottom: 0.5rem;
+  opacity: 0.85;
+}
 
 .rp-card-body { min-width: 0; }
 
