@@ -72,7 +72,6 @@ export default function RegionPage() {
           <div className="rp-eyebrow">Region</div>
 
           <h1 className="rp-title">
-            <span className="rp-title-the">The </span>
             <span className="rp-title-name">{region.name}</span>
           </h1>
 
@@ -108,11 +107,11 @@ export default function RegionPage() {
       <section className="rp-articles">
         <div className="rp-articles-header">
           <span className="rp-articles-label">Articles</span>
-          <h2 className="rp-articles-heading">From the {region.name}</h2>
+          <h2 className="rp-articles-heading">From {region.name}</h2>
         </div>
 
         <div className="rp-article-list" ref={listRef}>
-          {PLACEHOLDER_ARTICLES.map((article) => (
+          {PLACEHOLDER_ARTICLES.slice(0, region.articleCount ?? PLACEHOLDER_ARTICLES.length).map((article) => (
             <Link
               key={article.id}
               to={`/region/${region.slug}/article/${article.id}`}

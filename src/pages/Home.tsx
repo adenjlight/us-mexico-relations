@@ -37,10 +37,10 @@ export default function Home() {
         bodyInnerRef.current.style.opacity = String(Math.min(fadeIn, fadeOut));
       }
 
-      // Enable map interactivity only after body section is fully scrolled past
+      // Enable map interactivity once body section is mostly scrolled past
       if (bodySectionRef.current) {
         const rect = bodySectionRef.current.getBoundingClientRect();
-        setMapInteractive(rect.bottom <= 0);
+        setMapInteractive(rect.bottom <= vh * 0.2);
       }
     };
 
@@ -80,6 +80,31 @@ export default function Home() {
 
       {/* Transparent spacer — map shows through and is interactive here */}
       <section className="map-section" id="map" />
+
+      <section className="masthead-section">
+        <div className="masthead-inner">
+          <div className="masthead-header">
+            <div className="masthead-title">PSC 3500 — US–Mexico Relations</div>
+            <div className="masthead-sub">Spring 2026</div>
+          </div>
+          <div className="masthead-columns">
+            <div className="masthead-group">
+              <div className="masthead-role">Co-Editors</div>
+              <div className="masthead-name">Aden Light</div>
+              <div className="masthead-name">Lucy Bird</div>
+            </div>
+            <div className="masthead-group">
+              <div className="masthead-role">Contributors</div>
+              <div className="masthead-name">Sharpley, Sydney</div>
+              <div className="masthead-name">Davis, Daniel</div>
+              <div className="masthead-name">Duarte, Christopher</div>
+              <div className="masthead-name">Manko, Oliver</div>
+              <div className="masthead-name">Donas, Dimitri</div>
+              <div className="masthead-name">Schwartz, Nico</div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

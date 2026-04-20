@@ -12,6 +12,7 @@ interface Tooltip {
 export default function Map({ interactive = false }: { interactive?: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const hoveredIdRef = useRef<string | null>(null);
+  const cursorRegionRef = useRef<{ id: string; x: number; y: number } | null>(null);
   const leaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const readyRef = useRef(false);
   const animationDoneRef = useRef(false);
@@ -119,36 +120,38 @@ export default function Map({ interactive = false }: { interactive?: boolean }) 
     if (!interactive) {
       cancelLeaveTimer();
       if (hoveredIdRef.current) {
-        const r = regions.find((reg) => reg.id === hoveredIdRef.current);
-        const el = containerRef.current?.querySelector(`#${hoveredIdRef.current}`) as SVGPathElement | null;
-        if (el && r) { el.style.fill = r.color; el.style.filter = ''; el.style.transform = 'translateY(0)'; }
+        resetAllRegions();
         hoveredIdRef.current = null;
       }
       setTooltip(null);
+    } else if (readyRef.current && cursorRegionRef.current) {
+      const { id, x, y } = cursorRegionRef.current;
+      hoveredIdRef.current = id;
+      applyHover(id);
+      setTooltip({ x, y, name: getRegionById(id)?.name ?? '' });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [interactive]);
 
-  const resetRegion = (regionId: string) => {
-    const r = regions.find((reg) => reg.id === regionId);
-    const el = containerRef.current?.querySelector(`#${regionId}`) as SVGPathElement | null;
-    if (el && r) {
-      el.style.fill = r.color;
+  const resetAllRegions = () => {
+    regions.forEach((reg) => {
+      const el = containerRef.current?.querySelector(`#${reg.id}`) as SVGPathElement | null;
+      if (!el) return;
+      el.style.fill = reg.color;
       el.style.filter = '';
-      el.style.transform = 'translateY(0)';
-    }
+      el.style.transform = '';
+    });
   };
 
   const applyHover = (regionId: string) => {
     const r = regions.find((reg) => reg.id === regionId);
     const el = containerRef.current?.querySelector(`#${regionId}`) as SVGPathElement | null;
     if (el && r) {
-      // Move to end of parent so it renders on top of all border strokes
       el.parentNode?.appendChild(el);
       el.style.fill = r.hoverColor;
-      el.style.filter = 'drop-shadow(0 6px 14px rgba(0,0,0,0.28))';
-      el.style.transformOrigin = '50% 50%';
-      el.style.transform = 'scale(1.03)';
+      el.style.filter = 'drop-shadow(0 6px 14px rgba(0,0,0,0.35)) brightness(1.12)';
+      el.style.transform = 'scale(1.015)';
+      el.style.opacity = '1';
     }
   };
 
@@ -162,33 +165,37 @@ export default function Map({ interactive = false }: { interactive?: boolean }) 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const target = (e.target as Element).closest('[data-region-id]') as SVGPathElement | null;
     if (target) {
-      cancelLeaveTimer();
       const regionId = target.getAttribute('data-region-id')!;
       const region = getRegionById(regionId);
       if (region) {
+        cursorRegionRef.current = { id: regionId, x: e.clientX, y: e.clientY };
+        if (!readyRef.current) return;
+        cancelLeaveTimer();
         setTooltip({ x: e.clientX, y: e.clientY, name: region.name });
-        if (readyRef.current && hoveredIdRef.current !== regionId) {
-          if (hoveredIdRef.current) resetRegion(hoveredIdRef.current);
+        if (hoveredIdRef.current !== regionId) {
+          if (hoveredIdRef.current) resetAllRegions();
           hoveredIdRef.current = regionId;
           applyHover(regionId);
         }
       }
     } else {
+      cursorRegionRef.current = null;
       if (hoveredIdRef.current && !leaveTimerRef.current) {
         leaveTimerRef.current = setTimeout(() => {
-          if (hoveredIdRef.current) resetRegion(hoveredIdRef.current);
+          if (hoveredIdRef.current) resetAllRegions();
           hoveredIdRef.current = null;
           setTooltip(null);
           leaveTimerRef.current = null;
-        }, 60);
+        }, 120);
       }
     }
   };
 
   const handleMouseLeave = () => {
+    cursorRegionRef.current = null;
     cancelLeaveTimer();
     if (hoveredIdRef.current) {
-      resetRegion(hoveredIdRef.current);
+      resetAllRegions();
       hoveredIdRef.current = null;
     }
     setTooltip(null);

@@ -11,6 +11,7 @@ export interface Region {
   imageAlt: string;
   imageCredit: string;
   imageCreditUrl: string;
+  articleCount?: number;
 }
 
 export const regions: Region[] = [
@@ -74,6 +75,7 @@ export const regions: Region[] = [
     id: 'path09',
     slug: 'east',
     name: 'East',
+    articleCount: 1,
     color: '#30b8d8',
     hoverColor: '#70d0e8',
     states: ['Veracruz', 'Tabasco', 'Hidalgo'],
@@ -88,6 +90,7 @@ export const regions: Region[] = [
     id: 'path12',
     slug: 'central',
     name: 'Central',
+    articleCount: 1,
     color: '#a04020',
     hoverColor: '#c86840',
     states: ['Mexico City', 'State of Mexico', 'Puebla', 'Tlaxcala', 'Morelos', 'Querétaro'],

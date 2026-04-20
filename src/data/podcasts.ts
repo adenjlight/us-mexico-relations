@@ -43,20 +43,6 @@ const podcasts: Record<string, Podcast> = {
     description: 'The North Central plateau has been a corridor for migration for over a century. We trace the routes — economic, cultural, and physical — that connect Chihuahua to the United States.',
     audioUrl: null,
   },
-  east: {
-    title: 'Veracruz and the Gulf: Oil, Trade, and Colonial Memory',
-    date: 'January 2025',
-    duration: '26 min',
-    description: 'Mexico\'s oldest port city is also one of its most complex. This episode looks at how Veracruz\'s colonial past and petroleum economy shape its relationship with the United States today.',
-    audioUrl: null,
-  },
-  central: {
-    title: 'Mexico City and Washington: Power, Proximity, and Friction',
-    date: 'January 2025',
-    duration: '40 min',
-    description: 'The relationship between Mexico\'s capital and the US federal government is one of the most consequential bilateral dynamics in the Americas. We break down the key pressure points.',
-    audioUrl: null,
-  },
   southwest: {
     title: 'Indigenous Mexico and the US Border: Oaxacan Communities Abroad',
     date: 'January 2025',
