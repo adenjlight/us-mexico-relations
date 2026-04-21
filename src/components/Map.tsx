@@ -147,6 +147,7 @@ export default function Map({ interactive = false }: { interactive?: boolean }) 
     const r = regions.find((reg) => reg.id === regionId);
     const el = containerRef.current?.querySelector(`#${regionId}`) as SVGPathElement | null;
     if (el && r) {
+      el.style.animation = '';
       el.parentNode?.appendChild(el);
       el.style.fill = r.hoverColor;
       el.style.filter = 'drop-shadow(0 6px 14px rgba(0,0,0,0.35)) brightness(1.12)';
@@ -169,7 +170,7 @@ export default function Map({ interactive = false }: { interactive?: boolean }) 
       const region = getRegionById(regionId);
       if (region) {
         cursorRegionRef.current = { id: regionId, x: e.clientX, y: e.clientY };
-        if (!readyRef.current) return;
+        if (!interactiveRef.current) return;
         cancelLeaveTimer();
         setTooltip({ x: e.clientX, y: e.clientY, name: region.name });
         if (hoveredIdRef.current !== regionId) {
@@ -202,7 +203,7 @@ export default function Map({ interactive = false }: { interactive?: boolean }) 
   };
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!readyRef.current) return;
+    if (!interactiveRef.current) return;
     const target = (e.target as Element).closest('[data-region-id]') as SVGPathElement | null;
     if (target) {
       const regionId = target.getAttribute('data-region-id')!;

@@ -87,11 +87,6 @@ export default function ArticlePage() {
           Back to {region?.name ?? 'Region'}
         </Link>
 
-        <div className="ap-meta-bar">
-          <span className="ap-region-badge">{region?.name ?? 'Region'}</span>
-          <span className="ap-date">{meta.date}</span>
-        </div>
-
         <h1>{meta.title}</h1>
         {realArticle && <p className="ap-author">By {realArticle.author}</p>}
       </header>

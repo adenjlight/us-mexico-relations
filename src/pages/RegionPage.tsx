@@ -80,7 +80,6 @@ export default function RegionPage() {
         <div className="rp-hero-content">
           <Link to="/#map" className="rp-back-link">
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
-            Back to all regions
           </Link>
 
           <div className="rp-eyebrow">Region</div>
@@ -106,7 +105,15 @@ export default function RegionPage() {
         </div>
 
         <div className="rp-hero-image">
-          <img src={region.image} alt={region.imageAlt} />
+          <img
+            src={region.image}
+            alt={region.imageAlt}
+            style={{
+              ...(region.imagePosition ? { objectPosition: region.imagePosition } : {}),
+              ...(region.imageContain ? { objectFit: 'contain' as const } : {}),
+            }}
+          />
+          <span className="rp-image-caption">{region.imageAlt}</span>
           <a
             className="rp-image-credit"
             href={region.imageCreditUrl}
@@ -156,6 +163,7 @@ export default function RegionPage() {
                 </span>
                 <div className="rp-card-body">
                   <span className="rp-podcast-badge">Podcast</span>
+                  <h3 className="rp-card-title">{podcast.title}</h3>
                 </div>
                 <div className="rp-card-meta">
                   <div className="rp-card-arrow">

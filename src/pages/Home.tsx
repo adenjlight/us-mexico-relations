@@ -41,7 +41,7 @@ export default function Home() {
       // Enable map interactivity once body section is mostly scrolled past
       if (bodySectionRef.current) {
         const rect = bodySectionRef.current.getBoundingClientRect();
-        setMapInteractive(rect.bottom <= vh * 0.2);
+        setMapInteractive(rect.bottom <= vh);
       }
     };
 

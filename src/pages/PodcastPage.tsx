@@ -79,15 +79,7 @@ export default function PodcastPage() {
           Back to {region.name}
         </Link>
 
-        <div className="pp-meta-bar">
-          <span className="pp-type-badge">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3zm-1 3a1 1 0 0 1 2 0v4a1 1 0 0 1-2 0V4zm-3 4a4 4 0 0 0 8 0h1a5 5 0 0 1-4.5 4.97V15h-1v-2.03A5 5 0 0 1 3 8H4z"/></svg>
-            Podcast
-          </span>
-          <span className="pp-region-badge">{region.name}</span>
-          <span className="pp-date">{podcast.date}</span>
-        </div>
-
+        <h1 className="pp-title">{podcast.title}</h1>
         <p className="pp-description">{podcast.description}</p>
       </header>
 

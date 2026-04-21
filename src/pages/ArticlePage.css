@@ -5,7 +5,7 @@
 
 .ap-page {
   min-height: 100vh;
-  background: var(--navy-mid);
+  background: var(--navy);
   color: var(--cream);
 }
 
@@ -34,7 +34,7 @@
 }
 
 .ap-nav.scrolled {
-  background: rgba(21, 38, 64, 0.95);
+  background: rgba(26, 58, 82, 0.95);
   backdrop-filter: blur(12px);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
 }
@@ -70,7 +70,7 @@
 
 /* ── Article header ───────────────────────────────── */
 .ap-header {
-  padding: 9rem 3rem 4rem;
+  padding: 9rem 3rem 0;
   max-width: 780px;
   margin: 0 auto;
   opacity: 0;
@@ -137,7 +137,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--gold);
-  margin: 0 0 1.5rem;
+  margin: 0 0 0.5rem;
 }
 
 .ap-lede {
@@ -155,7 +155,7 @@
 .ap-body {
   max-width: 680px;
   margin: 0 auto;
-  padding: 3rem 3rem 2rem;
+  padding: 0 3rem 2rem;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.4s;
 }

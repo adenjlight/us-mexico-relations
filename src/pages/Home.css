@@ -128,12 +128,14 @@
   z-index: 1;
   -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  pointer-events: none;
 }
 
 .body-inner {
   max-width: 760px;
   width: 100%;
   opacity: 0;
+  pointer-events: auto;
 }
 
 .body-inner p {
