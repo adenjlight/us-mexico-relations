@@ -141,6 +141,10 @@
   height: 16px;
 }
 
+.aup-card-region--podcast {
+  color: var(--terracotta);
+}
+
 .aup-empty {
   color: var(--text-muted);
   padding: 48px 0;

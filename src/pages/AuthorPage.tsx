@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { regions } from '../data/regions';
 import { getArticlesByRegion } from '../data/articles';
+import { getPodcastsByAuthor } from '../data/podcasts';
 import Masthead from '../components/Masthead';
 import './AuthorPage.css';
 
@@ -17,14 +18,12 @@ export default function AuthorPage() {
       .map(a => ({ ...a, regionSlug: region.slug, regionName: region.name }))
   );
 
+  const authorPodcasts = getPodcastsByAuthor(authorName);
+
   return (
     <div className="aup-page">
       <nav className="aup-nav">
         <Link to="/" className="aup-nav-logo">US<span>–</span>MX</Link>
-        <ul className="aup-nav-links">
-          <li><Link to="/">Overview</Link></li>
-          <li><Link to="/#map">Regions</Link></li>
-        </ul>
       </nav>
 
       <header className="aup-header">
@@ -36,22 +35,37 @@ export default function AuthorPage() {
       </header>
 
       <div className="aup-body">
-        {authorArticles.length === 0 ? (
+        {authorArticles.length === 0 && authorPodcasts.length === 0 ? (
           <p className="aup-empty">No articles found.</p>
         ) : (
-          authorArticles.map(article => (
-            <Link
-              key={article.id}
-              to={`/region/${article.regionSlug}/article/${article.id}`}
-              className="aup-card"
-            >
-              <span className="aup-card-region">{article.regionName}</span>
-              <h2 className="aup-card-title">{article.title}</h2>
-              <div className="aup-card-arrow">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-              </div>
-            </Link>
-          ))
+          <>
+            {authorArticles.map(article => (
+              <Link
+                key={article.id}
+                to={`/region/${article.regionSlug}/article/${article.id}`}
+                className="aup-card"
+              >
+                <span className="aup-card-region">{article.regionName}</span>
+                <h2 className="aup-card-title">{article.title}</h2>
+                <div className="aup-card-arrow">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </div>
+              </Link>
+            ))}
+            {authorPodcasts.map(({ regionSlug, podcast }) => (
+              <Link
+                key={regionSlug}
+                to={`/region/${regionSlug}/podcast`}
+                className="aup-card"
+              >
+                <span className="aup-card-region aup-card-region--podcast">Podcast</span>
+                <h2 className="aup-card-title">{podcast.title}</h2>
+                <div className="aup-card-arrow">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </div>
+              </Link>
+            ))}
+          </>
         )}
       </div>
 

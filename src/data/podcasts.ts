@@ -3,6 +3,7 @@ export interface Podcast {
   date: string;
   duration: string;
   description: string;
+  author?: string;
   /*
    * HOW TO ADD AUDIO:
    * 1. Drop your MP3 file into the `public/audio/` folder.
@@ -30,10 +31,11 @@ const podcasts: Record<string, Podcast> = {
     audioUrl: null,
   },
   west: {
-    title: 'Placeholder Podcast Title',
+    title: 'Cartel Fragmentation and Violence',
     date: 'February 2025',
     duration: '35 min',
     description: 'Jalisco sends more migrants to the United States than almost any other Mexican state. This episode explores the circular migration patterns that have shaped communities on both ends.',
+    author: 'Sydney Sharpley',
     audioUrl: '/Audio/Sharpley Podcast.mp3',
   },
   'north-central': {
@@ -61,4 +63,10 @@ const podcasts: Record<string, Podcast> = {
 
 export function getPodcastBySlug(slug: string): Podcast | undefined {
   return podcasts[slug];
+}
+
+export function getPodcastsByAuthor(authorName: string): Array<{ regionSlug: string; podcast: Podcast }> {
+  return Object.entries(podcasts)
+    .filter(([, p]) => p.author === authorName)
+    .map(([regionSlug, podcast]) => ({ regionSlug, podcast }));
 }
