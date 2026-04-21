@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Map from '../components/Map';
 import Masthead from '../components/Masthead';
 import './Home.css';
@@ -14,10 +15,18 @@ Fusce fermentum. Nullam varius nulla nec sapien. Proin euismod, urna vel ultrici
 Phasellus at dui in ligula mollis ultricies. Integer placerat tristique nisl. Praesent augue. Fusce commodo. Vestibulum convallis, lorem a tempus semper, dui dui euismod elit, vitae placerat urna tortor vitae lacus. Nullam aliquet porttitor arcu. Donec posuere augue in quam. Etiam vel tortor sodales tellus ultricies commodo. Suspendisse potenti. Aenean in sem ac leo mollis blandit. Donec neque quam, dignissim in, mollis nec, sagittis eu, wisi. Phasellus lacus. Etiam laoreet quam sed arcu. Phasellus at dui in ligula mollis ultricies.`;
 
 export default function Home() {
+  const location = useLocation();
+  const scrollToMap = !!(location.state as { scrollToMap?: boolean } | null)?.scrollToMap;
   const heroInnerRef = useRef<HTMLDivElement>(null);
   const bodyInnerRef = useRef<HTMLDivElement>(null);
   const bodySectionRef = useRef<HTMLDivElement>(null);
-  const [mapInteractive, setMapInteractive] = useState(false);
+  const [mapInteractive, setMapInteractive] = useState(scrollToMap);
+
+  useEffect(() => {
+    if (scrollToMap) {
+      document.getElementById('map')?.scrollIntoView({ behavior: 'instant' });
+    }
+  }, []);
 
   useEffect(() => {
     const update = () => {

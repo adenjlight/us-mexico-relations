@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getRegionBySlug } from '../data/regions';
 import { getPodcastBySlug } from '../data/podcasts';
 import { getArticlesByRegion } from '../data/articles';
@@ -29,6 +29,7 @@ export default function RegionPage() {
   const { regionSlug } = useParams<{ regionSlug: string }>();
   const region = getRegionBySlug(regionSlug ?? '');
   const listRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -78,9 +79,12 @@ export default function RegionPage() {
     >
       <section className="rp-hero">
         <div className="rp-hero-content">
-          <Link to="/#map" className="rp-back-link">
+          <button
+            className="rp-back-link"
+            onClick={() => navigate('/', { state: { scrollToMap: true } })}
+          >
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
-          </Link>
+          </button>
 
           <div className="rp-eyebrow">Region</div>
 

@@ -97,6 +97,11 @@
   margin-bottom: 3rem;
   opacity: 0;
   animation: fadeUp 0.5s ease forwards 0.05s;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .rp-back-link:hover { color: var(--cream); }
