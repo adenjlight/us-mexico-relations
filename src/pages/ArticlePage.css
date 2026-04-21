@@ -373,6 +373,27 @@
 
 .ap-next:hover .ap-next-arrow svg { transform: translateX(3px); }
 
+/* Article figures / images */
+.ap-body figure {
+  margin: 2.5rem 0;
+}
+
+.ap-body figure img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.ap-body figcaption {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 0.65rem;
+  text-align: center;
+  font-style: italic;
+}
+
 /* ── Responsive ───────────────────────────────────── */
 @media (max-width: 768px) {
   .ap-header { padding: 7rem 1.5rem 3rem; }
