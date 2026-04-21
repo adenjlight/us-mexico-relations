@@ -7,6 +7,7 @@ export interface Article {
   id: string;
   title: string;
   author: string;
+  abstract?: string;
   excerpt: string;
   sections: ArticleSection[];
 }
@@ -39,6 +40,7 @@ const articlesByRegion: Record<string, Article[]> = {
       id: 'article-1',
       title: 'Climate, Sustainability, and Human Security in Northwest Mexico',
       author: 'Nico Schwartz',
+      abstract: 'The following essay will discuss how environmental crises in Northwest Mexico have led to human security issues that I believe will promote migration away from the region. I rely on evidence 1300–1400, when there was a huge migration away from the Southwest United States and Northwest Mexico when human security was being threatened in the region. I will prove that the environment and climate change are central detriments to human security today, which could signify another episode of depopulation in the future.',
       excerpt: 'Environmental crises in Northwest Mexico — drought, heat waves, and aquifer overexploitation — are threatening human security in ways that echo a historic depopulation of the region 600 years ago.',
       sections: [
         {
@@ -66,7 +68,7 @@ const articlesByRegion: Record<string, Article[]> = {
           heading: 'Aquifer Overexploitation',
           paragraphs: [
             `A counter argument to the aforementioned points might be that there is no evidence of climate change that has been made specifically worse by humans. But this is not true. According to the ${a('Multidisciplinary Publishing Institute (MDPI)', MDPI)}, overexploitation of over 100 of Mexico's aquifers — underground layers of permeable rock that store groundwater used in reservoirs and springs — has had major implications for water and food security in the country. The article also points out that almost one-third of these aquifers — 31 in total — are located in Baja California Peninsula, Sonora, and the Central Mexican Plateau.`,
-            `<figure class="ap-figure"><img src="/images/northwest-aquifers.png" alt="Map of overexploited aquifers in Mexico, 2021 and 2022, showing concentration in Baja California and Sonora" /><figcaption>Mapa 2.8: Acuíferos sobreexplotados, 2021 y 2022. Of 653 total aquifers, 111 are overexploited — nearly a third located in Northwest Mexico. Source: CONAGUA (2023).</figcaption></figure>`,
+            `<figure class="ap-figure"><img src="/images/northwest-aquifers.png" alt="Map of overexploited aquifers in Mexico, 2021 and 2022" /></figure>`,
             `Additionally, the MDPI article mentions that "in some cases, for instance the Hermosillo (Sonora) coastal aquifer, excessive pumping has resulted in salt water intrusion and saltpeter presence in agricultural fields." This can have especially bad consequences for farmers, which is alarming for an area that is more reliant on agriculture when compared to others.`,
           ],
         },

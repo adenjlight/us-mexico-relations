@@ -79,6 +79,9 @@ export default function ArticlePage() {
             By {realArticle.author}
           </Link>
         )}
+        {realArticle?.abstract && (
+          <p className="ap-abstract">{realArticle.abstract}</p>
+        )}
       </header>
 
       <div className="ap-body">

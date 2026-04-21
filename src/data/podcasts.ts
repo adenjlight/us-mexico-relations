@@ -1,6 +1,8 @@
 export interface Podcast {
   title: string;
   description: string;
+  descriptionParagraphs?: string[];
+  citations?: string[];
   author?: string;
   /*
    * HOW TO ADD AUDIO:
@@ -26,7 +28,20 @@ const podcasts: Record<string, Podcast> = {
   },
   west: {
     title: 'Cartel Fragmentation and Violence',
-    description: 'Jalisco sends more migrants to the United States than almost any other Mexican state. This episode explores the circular migration patterns that have shaped communities on both ends.',
+    description: 'This episode examines how cartel fragmentation has become a major driver of violence and displacement across Mexico\'s Pacific states.',
+    descriptionParagraphs: [
+      'This podcast examines how cartel fragmentation has become a major driver of violence and displacement across Mexico\'s Pacific states—Jalisco, Michoacán, Guerrero, and Colima. In the form of a narrative explanation the episode breaks down how large criminal organizations such as CJNG, Los Viagras, and La Familia Michoacana have splintered into smaller, competing factions. These fractures intensify territorial warfare, expand extortion economies, and increase forced recruitment, creating conditions that push thousands of families to flee their homes.',
+      'The podcast also highlights CJNG\'s unprecedented national expansion, Los Viagras\' transformation from vigilante origins into a powerful criminal actor, and La Familia Michoacana\'s continued influence through its splinter groups throughout the region. It also explores how government "kingpin" strategies, leadership losses, and shifting alliances accelerate fragmentation rather than contain it. As the episode shows, displacement in Pacific Mexico is increasingly tied to security threats, not just economic pressures—making cartel fragmentation a central force behind contemporary migration patterns.',
+    ],
+    citations: [
+      'https://www.cambridge.org/core/services/aop-cambridge-core/content/view/722B5652298B054DE372ECC2149219A7/S2049847025000044a.pdf/criminal-fragmentation-in-mexico.pdf',
+      'https://www.latintimes.com/jalisco-new-generation-cartel-becomes-first-cartel-history-have-presence-all-32-mexican-states-585254',
+      'https://www.dni.gov/nctc/terrorist_groups/cjng.html',
+      'https://www.wilsoncenter.org/article/killing-el-mencho-implications-cartels-and-mexicos-security',
+      'https://www.borderlandbeat.com/2025/10/the-viagras-sierra-santana-brothers.html',
+      'https://www.cfr.org/global-conflict-tracker/conflict/criminal-violence-mexico',
+      'https://smallwarsjournal.com/2026/02/16/transnational-organized-crime-in-mexico-continuity-change-and-uncertainty-under-the-sheinbaum-administration-part-i/',
+    ],
     author: 'Sydney Sharpley',
     audioUrl: '/Audio/Sharpley Podcast.mp3',
   },

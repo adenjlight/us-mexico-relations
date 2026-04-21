@@ -80,7 +80,25 @@ export default function PodcastPage() {
         </Link>
 
         <h1 className="pp-title">{podcast.title}</h1>
-        <p className="pp-description">{podcast.description}</p>
+        {podcast.descriptionParagraphs ? (
+          podcast.descriptionParagraphs.map((p, i) => (
+            <p key={i} className="pp-description">{p}</p>
+          ))
+        ) : (
+          <p className="pp-description">{podcast.description}</p>
+        )}
+        {podcast.citations && podcast.citations.length > 0 && (
+          <div className="pp-citations">
+            <span className="pp-citations-label">Sources</span>
+            <ol className="pp-citations-list">
+              {podcast.citations.map((url, i) => (
+                <li key={i}>
+                  <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
       </header>
 
       <div className="pp-player-wrap">
