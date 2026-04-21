@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getRegionBySlug } from '../data/regions';
 import { getArticle, getArticlesByRegion } from '../data/articles';
+import Masthead from '../components/Masthead';
 import './ArticlePage.css';
 
 const ARTICLES: Record<string, { title: string; date: string; lede: string; readTime: string }> = {
@@ -78,10 +79,6 @@ export default function ArticlePage() {
 
       <nav className="ap-nav" ref={navRef}>
         <Link to="/" className="ap-nav-logo">US<span>–</span>MX</Link>
-        <ul className="ap-nav-links">
-          <li><Link to="/">Overview</Link></li>
-          <li><Link to="/#map">Regions</Link></li>
-        </ul>
       </nav>
 
       <header className="ap-header">
@@ -151,10 +148,7 @@ export default function ArticlePage() {
         )}
       </div>
 
-      <footer className="ap-footer">
-        <div className="ap-footer-logo">PSC 3500 US–Mexico Relations</div>
-        <p>Spring 2026</p>
-      </footer>
+      <Masthead />
     </div>
   );
 }

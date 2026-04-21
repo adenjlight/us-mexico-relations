@@ -143,59 +143,6 @@
   margin: 0 0 1.2em;
 }
 
-/* ── Masthead ────────────────────────────────────── */
-.masthead-section {
-  position: relative;
-  z-index: 1;
-  background: rgba(10, 28, 42, 0.92);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 64px 24px;
-}
-
-.masthead-inner {
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.masthead-header {
-  margin-bottom: 40px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.masthead-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  color: var(--cream);
-  letter-spacing: 0.02em;
-}
-
-.masthead-sub {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-top: 4px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.masthead-columns {
-  display: flex;
-  gap: 64px;
-}
-
-.masthead-role {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--gold);
-  margin-bottom: 12px;
-}
-
-.masthead-name {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 2;
-}
 
 /* ── Map spacer — transparent, lets fixed map show through ── */
 .map-section {

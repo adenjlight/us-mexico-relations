@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getRegionBySlug } from '../data/regions';
 import { getPodcastBySlug } from '../data/podcasts';
+import Masthead from '../components/Masthead';
 import './PodcastPage.css';
 
 function formatTime(seconds: number): string {
@@ -141,10 +142,7 @@ export default function PodcastPage() {
         )}
       </div>
 
-      <footer className="pp-footer">
-        <div className="pp-footer-logo">PSC 3500 US–Mexico Relations</div>
-        <p>Spring 2026</p>
-      </footer>
+      <Masthead />
     </div>
   );
 }

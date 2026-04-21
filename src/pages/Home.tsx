@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Map from '../components/Map';
+import Masthead from '../components/Masthead';
 import './Home.css';
 
 const LOREM = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -81,30 +82,7 @@ export default function Home() {
       {/* Transparent spacer — map shows through and is interactive here */}
       <section className="map-section" id="map" />
 
-      <section className="masthead-section">
-        <div className="masthead-inner">
-          <div className="masthead-header">
-            <div className="masthead-title">PSC 3500 — US–Mexico Relations</div>
-            <div className="masthead-sub">Spring 2026</div>
-          </div>
-          <div className="masthead-columns">
-            <div className="masthead-group">
-              <div className="masthead-role">Co-Editors</div>
-              <div className="masthead-name">Aden Light</div>
-              <div className="masthead-name">Lucy Bird</div>
-            </div>
-            <div className="masthead-group">
-              <div className="masthead-role">Contributors</div>
-              <div className="masthead-name">Sharpley, Sydney</div>
-              <div className="masthead-name">Davis, Daniel</div>
-              <div className="masthead-name">Duarte, Christopher</div>
-              <div className="masthead-name">Manko, Oliver</div>
-              <div className="masthead-name">Donas, Dimitri</div>
-              <div className="masthead-name">Schwartz, Nico</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Masthead />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { getRegionBySlug } from '../data/regions';
 import { getPodcastBySlug } from '../data/podcasts';
 import { getArticlesByRegion } from '../data/articles';
+import Masthead from '../components/Masthead';
 import './RegionPage.css';
 
 const PLACEHOLDER_ARTICLES = [
@@ -133,7 +134,6 @@ export default function RegionPage() {
               <span className="rp-card-num">{article.num}</span>
               <div className="rp-card-body">
                 <h3 className="rp-card-title">{article.title}</h3>
-                <p className="rp-card-excerpt">{article.excerpt}</p>
               </div>
               <div className="rp-card-meta">
                 <div className="rp-card-arrow">
@@ -156,7 +156,6 @@ export default function RegionPage() {
                 </span>
                 <div className="rp-card-body">
                   <span className="rp-podcast-badge">Podcast</span>
-                  <p className="rp-card-excerpt">{podcast.description}</p>
                 </div>
                 <div className="rp-card-meta">
                   <div className="rp-card-arrow">
@@ -169,10 +168,7 @@ export default function RegionPage() {
         </div>
       </section>
 
-      <footer className="rp-footer">
-        <div className="rp-footer-logo">PSC 3500 US–Mexico Relations</div>
-        <p>Spring 2026</p>
-      </footer>
+      <Masthead />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import RegionPage from './pages/RegionPage';
 import ArticlePage from './pages/ArticlePage';
 import PodcastPage from './pages/PodcastPage';
+import AuthorPage from './pages/AuthorPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/region/:regionSlug" element={<RegionPage />} />
         <Route path="/region/:regionSlug/article/:articleId" element={<ArticlePage />} />
         <Route path="/region/:regionSlug/podcast" element={<PodcastPage />} />
+        <Route path="/author/:authorSlug" element={<AuthorPage />} />
       </Routes>
     </BrowserRouter>
   );
