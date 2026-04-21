@@ -18,6 +18,13 @@ const ELDERLY = 'https://www.sciencedirect.com/science/article/abs/pii/S14747065
 const SPRINGER_NATURE = 'https://link.springer.com/article/10.1007/s00484-009-0283-7';
 const MDPI = 'https://www.mdpi.com/2073-4441/10/11/1671';
 
+const WITS = 'https://wits.worldbank.org/countrysnapshot/en/MEX';
+const GARRIGA_PHILLIPS = 'https://journals.sagepub.com/doi/pdf/10.1177/00220027221145870';
+const FORBES_NEARSHORING = 'https://www.forbes.com/sites/nathanielparishflannery/2024/02/15/is-organized-crime-activity-threatening-tijuanas-nearshoring-boom/';
+const LUNA_PIZANO = 'https://www.scielo.org.mx/scielo.php?pid=S2594-01632024000200109&script=sci_arttext&tlng=en';
+const ECONOMIA_SONORA = 'https://www.economia.gob.mx/datamexico/en/profile/geo/sonora-so#industrial-parks';
+const ECONOMIA_DATA = 'https://www.economia.gob.mx/datamexico/';
+
 const NAF = 'https://fsi-live.s3.us-west-1.amazonaws.com/s3fs-public/evnts/media/NAF_2011_EG_(Final).pdf';
 const LFM = 'http://141282-the-evolution-of-la-familia-michoacan-a-case-study.pdf';
 const JSTOR2 = 'https://www.jstor.org/stable/26586860?seq=1';
@@ -77,6 +84,46 @@ const articlesByRegion: Record<string, Article[]> = {
           paragraphs: [
             `Mexico's environmental problems are particularly prevalent in Northwest Mexico, where human security is currently threatened by droughts, heat waves, and human degradation of resources. The problem has both scientific and social dimensions, in which natural climate change processes combined with a lack of sustainability efforts have accelerated the climate crisis in the region. This will have implications for the safety of the people living in Northwest Mexico. Those that have less socio-economic mobility, such as children and the elderly, who are unable to simply move away when facing more dangerous living conditions, will face increased risk of developing diseases that are directly linked to climate change. On top of that, agriculture and economic self-sufficiency will become obsolete if farmers no longer have the means to grow food.`,
             `Northwest Mexico will inevitably face the threat of population decline if steps are not taken to address the impacts of climate change on human security. The area was depopulated before when human security was being threatened, and it is bound to happen again if the environment continues to be degraded.`,
+          ],
+        },
+      ],
+    },
+    {
+      id: 'article-2',
+      title: 'Nearshoring and Crime in Northwest Mexico',
+      author: 'Nico Schwartz',
+      abstract: 'The following paper discusses the relationship between American companies nearshoring their operations to Northwest Mexico and increases in violence in the region. I argue that there is a lack of evidence showing a causal relationship between increases in foreign direct investment (FDI)– which I use to quantify nearshoring efforts– and violent crime. Instead, I argue that cartel fragmentation and volatility might be a better explanation for why FDI decreases as the number of criminal organizations in the region increase. American companies are deterred more by political instability and economic competition than they are by cartel violence. Mexico can benefit from nearshoring, but only if it improves its infrastructure and capacity to prevent cartel fragmentation.',
+      excerpt: 'American companies nearshoring to Northwest Mexico face a more complex landscape than cartel violence alone — cartel fragmentation, not violence per se, is what most deters foreign investment.',
+      sections: [
+        {
+          paragraphs: [
+            `As the United States and China have become global hegemons of international trade, Mexico has come to realize its competitive advantages in markets such as manufacturing, retail, and services. But this landscape of economic hierarchy presents a challenge for Mexico; Mexico's economy is stuck between one of innovation and wealth, and one of development and self-sufficiency. To counter this problem, Mexico has relied on its trade relationship with the United States. According to ${a('World Integrated Trade Solution', WITS)}, the United States receives 79.95% of Mexico's exports and sends Mexico 42.82% of its imports. Mexico's economy is heavily reliant on its trade relationship with the United States, which keeps it stable but limits its ceiling for growth. Due to this dynamic, U.S. companies have taken advantage of nearshoring— offshoring production closer to the continental U.S.— in order to reduce transportation costs and increase efficiency. Critics of nearshoring in Mexico have argued that U.S. companies could potentially disrupt cartel activities in Northwest Mexico, creating more danger for the people that live in the region. However, as ${a('Garriga and Phillips', GARRIGA_PHILLIPS)} point out, the media is conflicting in its assessment of the relationship between organized crime and foreign direct investment (FDI)— a metric used here to quantify nearshoring efforts, as it measures how much money American companies are investing into Mexico. Some reports have argued that companies are disincentivized to nearshore, while others argue that there is no impact at all. Because there is no clear causal evidence linking nearshoring to increased violence, the overall benefit of foreign direct investment makes it a favorable method for creating economic growth in Mexico.`,
+          ],
+        },
+        {
+          heading: 'Evidence on Nearshoring and Violence',
+          paragraphs: [
+            `There is little evidence to suggest that the recent surge in nearshoring by American corporations to Mexico has contributed to an increase in violence. A ${a('Forbes article', FORBES_NEARSHORING)} highlights that, in 2023, only 12 cargo trucks were hijacked across the entire Baja California region, which is known for its cartel activity and for being a hub for nearshoring. This contrasts sharply with states like Estado de Mexico and Puebla, which saw thousands of truck hijackings that same year. Of course, this comparison should be interpreted cautiously. Differences in crime levels across states may reflect broader regional dynamics— such as cartel presence, local governance capacity, or geography— rather than the effects of nearshoring itself. However, the relatively low number of hijackings in a major nearshoring hub like Baja California suggests that increased foreign investment does not necessarily coincide with higher levels of this type of crime. Instead, there is no clear causal evidence between nearshoring and violence, highlighting the need to distinguish between correlation and causation when assessing the impact of nearshoring on criminal activity. While it may seem intuitive that increased economic activity would lead to more cartel violence, there is little evidence to support this claim.`,
+          ],
+        },
+        {
+          heading: 'Cartel Fragmentation and Foreign Direct Investment',
+          paragraphs: [
+            `This does not mean that crime is completely irrelevant when considering the effects of nearshoring. Arguments to the contrary of the aforementioned points emphasize the volatility of the cartels when assessing the potential impact of nearshoring on cities in Northwest Mexico. Laura Calderon, director of the think tank Justice in Mexico, also highlights how Tijuana— which was a Sinaloa cartel stronghold in the past— has recently become contested after an alliance between the Jalisco Nueva Generación Cartel and Cartel de Tijuana was broken due to internal infighting. Now, three groups fight for control over Tijuana, contributing to the uptick in violence in the region. ${a('Data from Phillips and Garriga', GARRIGA_PHILLIPS)} confirms that there is a statistically significant negative correlation between FDI and the number of criminal groups in a state.`,
+            `<figure class="ap-figure"><img src="/images/northwest-nearshoring-fdi.png" alt="Figure 4: Predictive margins of criminal groups on new foreign direct investment" /><figcaption>Predictive margins of criminal groups on new foreign direct investment, from Garriga and Phillips</figcaption></figure>`,
+            `This means that states with more criminal groups tend to receive less foreign investment, though again there is limited evidence of causation. The explanation for this negative correlation is more nuanced than simply saying "more cartels lead to more violence, which disincentivizes FDI." Instead, more research would have to be done to truly understand what exactly it is about cartel fragmentation that disincentivizes FDI, but that is outside the scope of this paper. Based on Garriga and Phillips' analysis, we can only conclude the FDI is related to the number of organized criminal groups that exist in Mexico, not the extent to which they are violent.`,
+          ],
+        },
+        {
+          heading: 'The Case for Nearshoring',
+          paragraphs: [
+            `Considering these two perspectives, nearshoring is still beneficial and should be encouraged in policymaking situations. A ${a('report by Luna Pizano and Domínguez', LUNA_PIZANO)} argues that nearshoring can be beneficial for the Mexican economy— if they take the necessary steps to facilitate its integration. They argue that Mexico still needs to develop the road, air, and port infrastructure to manage the scale of the workforce that would result from an increase in nearshoring. They claim that an increase in industrial parks would also improve conditions for nearshoring. As it stands, Baja California has ten ${a('industrial parks', ECONOMIA_SONORA)}, where there are "adequate location conditions with infrastructure, equipment, basic services and permanent administration that allows continuous operation," according to the ${a('Mexican Government', ECONOMIA_DATA)}. In terms of their working population and capacity for acquiring the labor for nearshoring, Sonora and Baja California also have excellent conditions: their unemployment rates are 2.57% and 2.16%, and their economically active populations are 60.1% and 60%, respectively. In both states, an extremely high proportion of the population that can work actually does work, which is good for American companies looking for cheaper labor costs and Mexican workers seeking employment.`,
+          ],
+        },
+        {
+          heading: 'Conclusion',
+          paragraphs: [
+            `Northwest Mexico has experienced more and more nearshoring as a result of its increasing economic reliance on the United States. Its proximity to the U.S. also allows trade— both legal and illicit— to flourish. Simultaneously, crime has continued to increase in Northwest Mexico, specifically in cities like Tijuana, Ciudad Juarez, and Chihuahua. The findings of Garriga and Phillips indicate that reducing fragmentation among criminal groups— or strengthening state capacity to limit their influence— may be more important for attracting investment than reducing overall violence levels alone. This suggests that policies focused on improving local and federal capacity to confront the cartels may be more effective than those that simply respond to visible indicators of violence. Crime trends in Mexico appear to be driven more by cartel fragmentation and competition than by levels of foreign direct investment. Additionally, cartels will continue to operate as long as local governments lack the capacity to stop them. Discouraging foreign investment is unlikely to reduce crime and may instead undermine economic opportunities. A more effective approach is to promote nearshoring while simultaneously strengthening institutions to address the underlying drivers of organized crime. Mexico should continue to attract foreign investment while investing in infrastructure, education, and institutional capacity to support long-term economic growth.`,
           ],
         },
       ],
