@@ -71,7 +71,14 @@ export default function ArticlePage() {
         </Link>
 
         <h1>{meta.title}</h1>
-        {realArticle && <p className="ap-author">By {realArticle.author}</p>}
+        {realArticle && (
+          <Link
+            to={`/author/${realArticle.author.toLowerCase().replace(/\s+/g, '-')}`}
+            className="ap-author"
+          >
+            By {realArticle.author}
+          </Link>
+        )}
       </header>
 
       <div className="ap-body">

@@ -71,7 +71,7 @@ export default function Home() {
           <h1 className="hero-title">Mapping <em>Mexico</em></h1>
           <div className="hero-divider" />
           <p className="hero-sub">
-            Exploring the shared history, vibrant culture, and evolving diplomacy between two neighboring nations.
+            The patterns of migration, security, and trade throughout the nation
           </p>
         </div>
         <div className="scroll-cue">

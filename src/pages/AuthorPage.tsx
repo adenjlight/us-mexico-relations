@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { regions } from '../data/regions';
 import { getArticlesByRegion } from '../data/articles';
@@ -19,6 +20,8 @@ export default function AuthorPage() {
   );
 
   const authorPodcasts = getPodcastsByAuthor(authorName);
+
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <div className="aup-page">
