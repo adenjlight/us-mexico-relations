@@ -119,7 +119,7 @@ export default function PodcastPage() {
               </div>
               <div className="pp-time">
                 <span>{formatTime(currentTime)}</span>
-                <span>{duration ? formatTime(duration) : podcast.duration}</span>
+                <span>{duration ? formatTime(duration) : '--:--'}</span>
               </div>
             </div>
           </div>
@@ -129,7 +129,6 @@ export default function PodcastPage() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10a7 7 0 0 1-14 0M12 19v3M9 22h6"/></svg>
             </div>
             <p className="pp-coming-label">Episode coming soon</p>
-            <p className="pp-coming-sub">{podcast.duration} · {podcast.date}</p>
           </div>
         )}
       </div>

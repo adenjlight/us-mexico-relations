@@ -11,16 +11,12 @@ const PLACEHOLDER_ARTICLES = [
     id: 'article-1',
     title: 'Placeholder Article Title One',
     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud.',
-    date: 'March 2025',
-    readTime: '8 min read',
     num: '01',
   },
   {
     id: 'article-2',
     title: 'Placeholder Article Title Two',
     excerpt: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam feugiat vitae ultricies eget tempor sit amet.',
-    date: 'February 2025',
-    readTime: '11 min read',
     num: '02',
   },
 ];
@@ -57,8 +53,6 @@ export default function RegionPage() {
         id: a.id,
         title: a.title,
         excerpt: a.excerpt,
-        date: a.date,
-        readTime: a.readTime,
         num: String(i + 1).padStart(2, '0'),
       }))
     : PLACEHOLDER_ARTICLES.slice(0, region?.articleCount ?? PLACEHOLDER_ARTICLES.length);

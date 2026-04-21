@@ -7,10 +7,7 @@ export interface Article {
   id: string;
   title: string;
   author: string;
-  date: string;
-  readTime: string;
   excerpt: string;
-  lede: string;
   sections: ArticleSection[];
 }
 
@@ -36,10 +33,7 @@ const articlesByRegion: Record<string, Article[]> = {
       id: 'article-1',
       title: 'Coastal Agricultural Economies and Migration in Pacific Mexico: Coffee, Avocado, and Fishing in Guerrero, Michoacán, and Jalisco',
       author: 'Sydney Sharpley',
-      date: 'April 2026',
-      readTime: '8 min read',
       excerpt: 'How coffee, avocado, and fishing industries in Mexico\'s Pacific states have become drivers of migration through market volatility, environmental stress, and criminal governance.',
-      lede: 'Mexico\'s Pacific states sit at the intersection of agricultural transformation, environmental stress, and escalating insecurity — where rural livelihoods are reshaped by global markets, climate pressures, and organized crime.',
       sections: [
         {
           heading: 'Introduction',
@@ -95,10 +89,7 @@ const articlesByRegion: Record<string, Article[]> = {
       id: 'article-2',
       title: 'Criminal Fragmentation, Territorial Control, and Migration in Michoacán and Guerrero',
       author: 'Sydney Sharpley',
-      date: 'April 2026',
-      readTime: '9 min read',
       excerpt: 'How criminal organizations in Michoacán and Guerrero have evolved into territorial governments — and how extortion, forced recruitment, and displacement are driving migration to the United States.',
-      lede: 'Over two decades, criminal groups in Michoacán and Guerrero have evolved from drug-trafficking organizations into territorial powers that govern through extortion, forced recruitment, and social control — accelerating displacement and international migration.',
       sections: [
         {
           heading: 'Introduction',

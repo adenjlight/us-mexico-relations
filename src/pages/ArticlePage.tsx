@@ -5,25 +5,10 @@ import { getArticle, getArticlesByRegion } from '../data/articles';
 import Masthead from '../components/Masthead';
 import './ArticlePage.css';
 
-const ARTICLES: Record<string, { title: string; date: string; lede: string; readTime: string }> = {
-  'article-1': {
-    title: 'Placeholder Article Title One',
-    date: 'March 2025',
-    lede: 'A placeholder lede summarizing the key argument of this article — the compelling hook that draws the reader into the full piece.',
-    readTime: '8 min read',
-  },
-  'article-2': {
-    title: 'Placeholder Article Title Two',
-    date: 'February 2025',
-    lede: 'A placeholder lede for the second article, offering a brief and evocative summary of what follows in the body text.',
-    readTime: '11 min read',
-  },
-  'article-3': {
-    title: 'Placeholder Article Title Three',
-    date: 'January 2025',
-    lede: 'A placeholder lede for the third article — context, stakes, and a reason to keep reading all condensed into a sentence or two.',
-    readTime: '6 min read',
-  },
+const ARTICLES: Record<string, { title: string }> = {
+  'article-1': { title: 'Placeholder Article Title One' },
+  'article-2': { title: 'Placeholder Article Title Two' },
+  'article-3': { title: 'Placeholder Article Title Three' },
 };
 
 const BODY_PARAGRAPHS = [
@@ -41,9 +26,7 @@ export default function ArticlePage() {
 
   const realArticle = getArticle(regionSlug ?? '', articleId ?? '');
   const fallbackMeta = ARTICLES[articleId ?? ''] ?? ARTICLES['article-1'];
-  const meta = realArticle
-    ? { title: realArticle.title, date: realArticle.date, lede: realArticle.lede, readTime: realArticle.readTime }
-    : fallbackMeta;
+  const meta = realArticle ? { title: realArticle.title } : fallbackMeta;
 
   const regionArticles = getArticlesByRegion(regionSlug ?? '');
   const allIds = regionArticles.length > 0 ? regionArticles.map((a) => a.id) : Object.keys(ARTICLES);
