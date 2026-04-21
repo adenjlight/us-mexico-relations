@@ -19,7 +19,8 @@ const podcasts: Record<string, Podcast> = {
   northwest: {
     title: 'Placeholder Podcast Title',
     description: 'A conversation about how export-processing zones transformed Baja California and Sonora — and what that means for workers and border communities on both sides.',
-    audioUrl: null,
+    author: 'Nico Schwartz',
+    audioUrl: '/Audio/Schwartz Podcast U.S. MX Final.mp3',
   },
   northeast: {
     title: 'Placeholder Podcast Title',

@@ -125,8 +125,7 @@ export default function RegionPage() {
 
       <section className="rp-articles">
         <div className="rp-articles-header">
-          <span className="rp-articles-label">Articles</span>
-          <h2 className="rp-articles-heading">From {region.name}</h2>
+          <h2 className="rp-articles-heading">Explore</h2>
         </div>
 
         <div className="rp-article-list" ref={listRef}>
