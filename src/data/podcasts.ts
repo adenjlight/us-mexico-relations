@@ -34,7 +34,7 @@ const podcasts: Record<string, Podcast> = {
     date: 'February 2025',
     duration: '35 min',
     description: 'Jalisco sends more migrants to the United States than almost any other Mexican state. This episode explores the circular migration patterns that have shaped communities on both ends.',
-    audioUrl: null,
+    audioUrl: '/Audio/Sharpley Podcast.mp3',
   },
   'north-central': {
     title: 'Copper Canyon to Ciudad Juárez: The Long Road North',

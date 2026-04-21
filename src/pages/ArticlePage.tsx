@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getRegionBySlug } from '../data/regions';
+import { getArticle, getArticlesByRegion } from '../data/articles';
 import './ArticlePage.css';
 
 const ARTICLES: Record<string, { title: string; date: string; lede: string; readTime: string }> = {
@@ -37,12 +38,24 @@ export default function ArticlePage() {
   const progressRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
 
-  const meta = ARTICLES[articleId ?? ''] ?? ARTICLES['article-1'];
+  const realArticle = getArticle(regionSlug ?? '', articleId ?? '');
+  const fallbackMeta = ARTICLES[articleId ?? ''] ?? ARTICLES['article-1'];
+  const meta = realArticle
+    ? { title: realArticle.title, date: realArticle.date, lede: realArticle.lede, readTime: realArticle.readTime }
+    : fallbackMeta;
 
-  const articleIds = Object.keys(ARTICLES);
-  const currentIndex = articleIds.indexOf(articleId ?? '');
-  const nextId = articleIds[currentIndex + 1];
-  const nextMeta = nextId ? ARTICLES[nextId] : null;
+  const regionArticles = getArticlesByRegion(regionSlug ?? '');
+  const allIds = regionArticles.length > 0 ? regionArticles.map((a) => a.id) : Object.keys(ARTICLES);
+  const currentIndex = allIds.indexOf(articleId ?? '');
+  const nextId = allIds[currentIndex + 1];
+  const nextRealArticle = nextId ? getArticle(regionSlug ?? '', nextId) : null;
+  const nextMeta = nextId
+    ? { title: nextRealArticle?.title ?? ARTICLES[nextId]?.title ?? '' }
+    : null;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [regionSlug, articleId]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -80,37 +93,42 @@ export default function ArticlePage() {
         <div className="ap-meta-bar">
           <span className="ap-region-badge">{region?.name ?? 'Region'}</span>
           <span className="ap-date">{meta.date}</span>
-          <span className="ap-read-time">{meta.readTime}</span>
         </div>
 
         <h1>{meta.title}</h1>
-        <p className="ap-lede">{meta.lede}</p>
+        {realArticle && <p className="ap-author">By {realArticle.author}</p>}
       </header>
 
       <div className="ap-body">
-        <p className="drop-cap">{BODY_PARAGRAPHS[0]}</p>
-        <p>{BODY_PARAGRAPHS[1]}</p>
-
-        <div className="ap-image">
-          <span>Image placeholder</span>
-        </div>
-
-        <h2>Section heading</h2>
-        <p>{BODY_PARAGRAPHS[2]}</p>
-
-        <div className="ap-pull-stat">
-          <div className="ap-pull-number">$5.9B</div>
-          <div className="ap-pull-label">Placeholder statistic label</div>
-        </div>
-
-        <blockquote>
-          <p>Placeholder pull quote — a striking sentence from the article that encapsulates a key insight or argument.</p>
-          <cite>— Source Name, Institution</cite>
-        </blockquote>
-
-        <h2>Second section heading</h2>
-        <p>{BODY_PARAGRAPHS[3]}</p>
-        <p>{BODY_PARAGRAPHS[1]}</p>
+        {realArticle ? (
+          realArticle.sections.map((section, si) => (
+            <div key={si}>
+              {section.heading && <h2>{section.heading}</h2>}
+              {section.paragraphs.map((para, pi) => (
+                <p key={pi} className={si === 0 && pi === 0 ? 'drop-cap' : undefined} dangerouslySetInnerHTML={{ __html: para }} />
+              ))}
+            </div>
+          ))
+        ) : (
+          <>
+            <p className="drop-cap">{BODY_PARAGRAPHS[0]}</p>
+            <p>{BODY_PARAGRAPHS[1]}</p>
+            <div className="ap-image"><span>Image placeholder</span></div>
+            <h2>Section heading</h2>
+            <p>{BODY_PARAGRAPHS[2]}</p>
+            <div className="ap-pull-stat">
+              <div className="ap-pull-number">$5.9B</div>
+              <div className="ap-pull-label">Placeholder statistic label</div>
+            </div>
+            <blockquote>
+              <p>Placeholder pull quote — a striking sentence from the article that encapsulates a key insight or argument.</p>
+              <cite>— Source Name, Institution</cite>
+            </blockquote>
+            <h2>Second section heading</h2>
+            <p>{BODY_PARAGRAPHS[3]}</p>
+            <p>{BODY_PARAGRAPHS[1]}</p>
+          </>
+        )}
       </div>
 
       <div className="ap-end">

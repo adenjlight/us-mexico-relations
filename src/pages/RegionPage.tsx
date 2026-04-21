@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getRegionBySlug } from '../data/regions';
 import { getPodcastBySlug } from '../data/podcasts';
+import { getArticlesByRegion } from '../data/articles';
 import './RegionPage.css';
 
 const PLACEHOLDER_ARTICLES = [
@@ -47,6 +48,18 @@ export default function RegionPage() {
     });
     return () => observer.disconnect();
   }, []);
+
+  const realArticles = getArticlesByRegion(region?.slug ?? '');
+  const articles = realArticles.length > 0
+    ? realArticles.slice(0, region?.articleCount ?? realArticles.length).map((a, i) => ({
+        id: a.id,
+        title: a.title,
+        excerpt: a.excerpt,
+        date: a.date,
+        readTime: a.readTime,
+        num: String(i + 1).padStart(2, '0'),
+      }))
+    : PLACEHOLDER_ARTICLES.slice(0, region?.articleCount ?? PLACEHOLDER_ARTICLES.length);
 
   if (!region) {
     return (
@@ -111,7 +124,7 @@ export default function RegionPage() {
         </div>
 
         <div className="rp-article-list" ref={listRef}>
-          {PLACEHOLDER_ARTICLES.slice(0, region.articleCount ?? PLACEHOLDER_ARTICLES.length).map((article) => (
+          {articles.map((article) => (
             <Link
               key={article.id}
               to={`/region/${region.slug}/article/${article.id}`}
@@ -123,8 +136,6 @@ export default function RegionPage() {
                 <p className="rp-card-excerpt">{article.excerpt}</p>
               </div>
               <div className="rp-card-meta">
-                <span className="rp-card-date">{article.date}</span>
-                <span className="rp-card-time">{article.readTime}</span>
                 <div className="rp-card-arrow">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
                 </div>
@@ -145,12 +156,9 @@ export default function RegionPage() {
                 </span>
                 <div className="rp-card-body">
                   <span className="rp-podcast-badge">Podcast</span>
-                  <h3 className="rp-card-title">{podcast.title}</h3>
                   <p className="rp-card-excerpt">{podcast.description}</p>
                 </div>
                 <div className="rp-card-meta">
-                  <span className="rp-card-date">{podcast.date}</span>
-                  <span className="rp-card-time">{podcast.duration}</span>
                   <div className="rp-card-arrow">
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
                   </div>

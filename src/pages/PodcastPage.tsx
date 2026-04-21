@@ -87,7 +87,6 @@ export default function PodcastPage() {
           <span className="pp-date">{podcast.date}</span>
         </div>
 
-        <h1>{podcast.title}</h1>
         <p className="pp-description">{podcast.description}</p>
       </header>
 

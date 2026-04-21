@@ -138,6 +138,14 @@
   margin-bottom: 1.5rem;
 }
 
+.ap-author {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--terracotta);
+  margin: 0 0 1.5rem;
+}
+
 .ap-lede {
   font-family: 'Lora', serif;
   font-size: 1.2rem;
