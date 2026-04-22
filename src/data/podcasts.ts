@@ -37,7 +37,7 @@ const podcasts: Record<string, Podcast> = {
       { label: 'Texas Tribune - Abbott ends inspections that clogged commercial traffic', url: 'https://www.texastribune.org/2022/04/15/texas-border-abbott-vehicle-inspections/' },
       { label: 'Center for Immigration Studies - Texas Governor Abbott Ends Trade Disruption on Brownsville Bridge', url: 'https://cis.org/Bensman/Texas-Governor-Abbott-Ends-Trade-Disruption-Brownsville-Bridge' },
     ],
-    author: 'Duarte',
+    author: 'Christopher Duarte',
     audioUrl: '/Audio/Duarte- Northeastern Mexican Governers Shared Stratergy.mp3',
   },
   west: {

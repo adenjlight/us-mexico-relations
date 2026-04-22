@@ -80,6 +80,14 @@ export default function PodcastPage() {
         </Link>
 
         <h1 className="pp-title">{podcast.title}</h1>
+        {podcast.author && (
+          <Link
+            to={`/author/${podcast.author.toLowerCase().replace(/\s+/g, '-')}`}
+            className="pp-byline"
+          >
+            By {podcast.author}
+          </Link>
+        )}
         {podcast.descriptionParagraphs ? (
           podcast.descriptionParagraphs.map((p, i) => (
             <p key={i} className="pp-description">{p}</p>

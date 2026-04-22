@@ -25,6 +25,8 @@ import { westCriminalFragmentation } from './articles/west-criminal-fragmentatio
 import { southwestChiapas } from './articles/southwest-chiapas';
 import { southeastTourism } from './articles/southeast-tourism';
 import { southeastYucatan } from './articles/southeast-yucatan';
+import { northCentralFuelTheft } from './articles/north-central-fuel-theft';
+import { northCentralNearshoringBoom } from './articles/north-central-nearshoring-boom';
 
 const articlesByRegion: Record<string, Article[]> = {
   northeast: [northeastWater],
@@ -33,6 +35,7 @@ const articlesByRegion: Record<string, Article[]> = {
   west: [westCoastalAgriculture, westCriminalFragmentation],
   southwest: [southwestChiapas],
   southeast: [southeastTourism, southeastYucatan],
+  'north-central': [northCentralFuelTheft, northCentralNearshoringBoom],
 };
 
 export function getArticlesByRegion(slug: string): Article[] {
