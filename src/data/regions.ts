@@ -6,7 +6,7 @@ export interface Region {
   hoverColor: string;
   states: string[];
   population: string;
-  description: string;
+  description?: string;
   image: string;
   imageAlt: string;
   imageCredit: string;
@@ -25,7 +25,6 @@ export const regions: Region[] = [
     hoverColor: '#d09050',
     states: ['Baja California', 'Baja California Sur', 'Sonora', 'Sinaloa'],
     population: '10.5M',
-    description: 'Spanning Baja California, Sonora, and Sinaloa — a region defined by maquiladora industries, Pacific trade routes, and a border culture forged by decades of migration and economic exchange with California and Arizona.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/1/1f/San_Isidro%2C_West_Coastal%2C_Baja_California_Sur%2C_Mexico.jpg',
     imageAlt: 'San Isidro, Baja California Sur',
     imageCredit: 'Wonderlane / Wikimedia Commons',
@@ -39,7 +38,6 @@ export const regions: Region[] = [
     hoverColor: '#f5d860',
     states: ['Tamaulipas', 'Nuevo León', 'Coahuila'],
     population: '12.5M',
-    description: 'Spanning Tamaulipas, Nuevo León, and Coahuila — a region defined by industrial growth, cross-border trade corridors, and a rapidly evolving cultural identity shaped by proximity to Texas.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/1/12/Skyline_de_Monterrey.jpg',
     imageAlt: 'Monterrey Skyline, Nuevo León',
     imageCredit: 'Wikimedia Commons',
@@ -67,7 +65,6 @@ export const regions: Region[] = [
     hoverColor: '#40a0a0',
     states: ['Chihuahua', 'Durango', 'Zacatecas', 'San Luis Potosí', 'Aguascalientes', 'Guanajuato'],
     population: '17.4M',
-    description: 'Spanning Chihuahua, Durango, and the high plateau — a vast region defined by ranching heritage, extractive industries, and a long history of migration to the US Southwest.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/2/2b/Barrancas_del_Cobre.JPG',
     imageAlt: 'Copper Canyon, Chihuahua',
     imageCredit: 'Wikimedia Commons',
@@ -82,7 +79,7 @@ export const regions: Region[] = [
     hoverColor: '#70d0e8',
     states: ['Veracruz', 'Tabasco', 'Hidalgo'],
     population: '13.5M',
-    description: 'Spanning Veracruz, Tabasco, and Hidalgo — a region anchored by Gulf port commerce, oil production, and a rich Afro-Mexican and indigenous heritage with deep roots in the colonial trade economy.',
+    description: 'This region, which borders on the Gulf of Mexico, features a major economic hub based on its oil production and ports. Boasting a tropical climate and biodiversity, it also serves as a tourist destination.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Prismas_Bas%C3%A1lticos%2C_Huasca_de_Ocampo%2C_Hidalgo%2C_M%C3%A9xico%2C_2013-10-10%2C_DD_13.JPG',
     imageAlt: 'The Basaltic Prisms of Santa María Regla, Hidalgo',
     imageCredit: 'Diego Delso, delso.photo, License CC BY-SA',
@@ -111,7 +108,6 @@ export const regions: Region[] = [
     hoverColor: '#20986a',
     states: ['Guerrero', 'Oaxaca', 'Chiapas'],
     population: '13.2M',
-    description: 'Spanning Guerrero, Oaxaca, and Chiapas — Mexico\'s most indigenous region, where dozens of native languages persist alongside deep inequalities, grassroots political movements, and extraordinary biodiversity.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/1/16/Monte_Alban_at_High_Noon_02.jpg',
     imageAlt: 'Monte Albán, Oaxaca',
     imageCredit: 'Kellihayden / Wikimedia Commons',

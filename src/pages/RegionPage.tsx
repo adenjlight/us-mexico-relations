@@ -86,7 +86,7 @@ export default function RegionPage() {
             <span className="rp-title-name">{region.name}</span>
           </h1>
 
-          <p className="rp-description">{region.description}</p>
+          {region.description && <p className="rp-description">{region.description}</p>}
 
           <div className="rp-divider" />
 
