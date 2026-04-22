@@ -1,6 +1,7 @@
 export interface ArticleSection {
   heading?: string;
   paragraphs: string[];
+  imageAfterParagraph?: Record<number, string>;
 }
 
 export interface Article {
@@ -8,6 +9,7 @@ export interface Article {
   title: string;
   author: string;
   abstract?: string;
+  abstractImage?: string;
   excerpt: string;
   sections: ArticleSection[];
 }
@@ -18,6 +20,24 @@ const ELDERLY = 'https://www.sciencedirect.com/science/article/abs/pii/S14747065
 const SPRINGER_NATURE = 'https://link.springer.com/article/10.1007/s00484-009-0283-7';
 const MDPI = 'https://www.mdpi.com/2073-4441/10/11/1671';
 
+const SIPAZ_I = 'https://www.sipaz.org/facts-about-chiapas-i/?lang=en';
+const SIPAZ_II = 'https://www.sipaz.org/facts-about-chiapas-ii/?lang=en';
+const CSM = 'https://www.csmonitor.com/1994/0303/03071.html';
+const BRITANNICA_MARCOS = 'https://www.britannica.com/biography/Subcomandante-Marcos';
+const IATP = 'https://www.iatp.org/unfair-us-trade-practices-undermine-mexicos-food-self-sufficiency-efforts';
+const PUBLIC_CITIZEN = 'https://www.citizen.org/wp-content/uploads/NAFTA-Factsheet_Mexico-Legacy_Oct-2019.pdf';
+const ARTICLE27 = 'https://legalculturessubsoil.ilcs.sas.ac.uk/legal-actions/1992-reform-of-article-27-of-mexican-constitution/';
+const SAN_ANDRES = 'https://schoolsforchiapas.org/library/indigenous-rights-san-andres/';
+const BBVA = 'https://www.bbvaresearch.com/en/publicaciones/mexico-notable-progress-poverty-at-its-lowest-level-of-296-but-inequalities-persist/';
+const TREN_MAYA = 'https://www.latinorebels.com/2023/03/31/mayantrainindigenous/';
+const INSIGHT_CRIME_CHIAPAS = 'https://insightcrime.org/news/chiapas-bleeds-cjng-sinaloa-cartel-guatemala-trafficking-routes/';
+const SIPAZ_VIOLENCE = 'https://www.sipaz.org/focus-chiapas-in-the-spiral-of-armed-and-criminal-violence/?lang=en';
+const SCHOOLS_CARTEL = 'https://schoolsforchiapas.org/war-between-the-cjng-and-sinaloa-cartel-keeps-chiapas-immobilized/';
+
+const AZAOLA = 'https://www.academia.edu/111078476/The_Weaknesses_of_Public_Security_Forces_in_Mexico_City';
+const SILVA = 'https://www.scielo.org.mx/pdf/mlr/v9n1/2448-5306-mlr-9-01-00003.pdf';
+const NYT_CDMX = 'https://www.nytimes.com/2022/08/09/world/americas/mexico-city-police-abuse.html';
+
 const WITS = 'https://wits.worldbank.org/countrysnapshot/en/MEX';
 const GARRIGA_PHILLIPS = 'https://journals.sagepub.com/doi/pdf/10.1177/00220027221145870';
 const FORBES_NEARSHORING = 'https://www.forbes.com/sites/nathanielparishflannery/2024/02/15/is-organized-crime-activity-threatening-tijuanas-nearshoring-boom/';
@@ -25,7 +45,13 @@ const LUNA_PIZANO = 'https://www.scielo.org.mx/scielo.php?pid=S2594-016320240002
 const ECONOMIA_SONORA = 'https://www.economia.gob.mx/datamexico/en/profile/geo/sonora-so#industrial-parks';
 const ECONOMIA_DATA = 'https://www.economia.gob.mx/datamexico/';
 
-const NAF = 'https://fsi-live.s3.us-west-1.amazonaws.com/s3fs-public/evnts/media/NAF_2011_EG_(Final).pdf';
+const FREIGHTWAVES = 'https://www.freightwaves.com/news/us-mexico-trade-hits-new-high-of-872b-in-2025';
+const LAMP = 'https://onlinelibrary.wiley.com/doi/10.1111/lamp.12340';
+const WILSON = 'https://www.wilsoncenter.org/article/mexico-must-take-advantage-moment-secure-investment-and-promote-nearshoring';
+const REST_OF_WORLD = 'https://restofworld.org/2023/tesla-new-factory-mexico-drought/';
+const MDPI_WATER = 'https://www.mdpi.com/2071-1050/16/3/1011';
+
+const NAF ='https://fsi-live.s3.us-west-1.amazonaws.com/s3fs-public/evnts/media/NAF_2011_EG_(Final).pdf';
 const LFM = 'http://141282-the-evolution-of-la-familia-michoacan-a-case-study.pdf';
 const JSTOR2 = 'https://www.jstor.org/stable/26586860?seq=1';
 const GLOBAL = 'https://globalinitiative.net/wp-content/uploads/2023/03/Romain-Le-Cour-Grandmaison-Ten-years-of-vigilantes-The-Mexican-autodefensas-GI-TOC-March-2023.pdf';
@@ -42,6 +68,53 @@ const a = (text: string, url: string) =>
   `<a href="${url.replace(/&/g, '&amp;')}" target="_blank" rel="noopener noreferrer">${text}</a>`;
 
 const articlesByRegion: Record<string, Article[]> = {
+  northeast: [
+    {
+      id: 'article-1',
+      title: 'Boom on Borrowed Water',
+      author: 'Christopher Duarte',
+      abstract: 'Northeast Mexico — which includes the states of Nuevo León, Coahuila, and Tamaulipas — has emerged as the epicenter of the U.S. nearshoring wave, capturing the bulk of foreign investment as companies restructure supply chains away from Asia. The economic gains are real: record trade figures, falling unemployment, and a landmark industrial footprint. But the boom is colliding with a hard ecological constraint. The 2022 Monterrey water crisis exposed the fragility of a semi-arid region being asked to power North America\'s manufacturing renaissance. This article argues that the region\'s industrial model cannot be sustained without confronting a structural water deficit that nearshoring is actively deepening, and that Washington, Mexico City, and corporate boardrooms have yet to seriously grapple with that trade-off.',
+      excerpt: 'Northeast Mexico has captured the bulk of North America\'s nearshoring boom, but a structural water deficit — worsened by every new factory — is the constraint that record trade figures and falling unemployment cannot paper over.',
+      sections: [
+        {
+          heading: 'A Manufacturing Boom in Three States',
+          paragraphs: [
+            `Mexico overtook China as the United States' top trading partner in 2023, and by 2025 bilateral goods trade had reached a record ${a('$872.8 billion', FREIGHTWAVES)} even as U.S. imports from China fell by nearly 29%. The border corridor of Nuevo León, Coahuila, Tamaulipas, Chihuahua, and Baja California now produces ${a('more than half of Mexico\'s manufacturing exports', LAMP)}, with Nuevo León as the undisputed hub. ${a('State GDP grew 4.2% in mid-2025', FREIGHTWAVES)}, unemployment fell to a 20-year low of 2.75%, and extreme poverty in the state dropped from 2.1% to 0.5% since 2020.`,
+            `The corporate roster that has expanded in NE Mexico makes the story concrete. LEGO added $508 million to what is now the world's largest brick factory in Ciénega de Flores. Volvo is completing a $1 billion heavy-truck plant — its largest globally. Mattel's Montoi facility is the world's biggest toy factory, exporting to 30 countries. Kia, Carrier, John Deere, Caterpillar, Whirlpool, and Amazon have all expanded, while Taiwanese electronics giants Quanta and Foxconn now anchor a technology manufacturing corridor outside Monterrey. At Hofusan Industrial Park in Salinas Victoria, ${a('roughly one in five new tenants is a Chinese firm', WILSON)} — including Hisense, Kuka Home, and Man Wah — openly seeking to sidestep U.S. tariffs by manufacturing in Mexico. The numbers are staggering in scale. Nuevo León hosts more than 120 industrial parks and has attracted cumulative foreign direct investment in the tens of billions since the nearshoring surge began. ${a('Port Laredo moved $354 billion in goods in 2025 alone', FREIGHTWAVES)} — more than any other U.S. trade gateway.`,
+          ],
+        },
+        {
+          heading: 'USMCA, Tariffs, and the Uncertain Policy Landscape',
+          paragraphs: [
+            `The legal architecture driving nearshoring is the United States-Mexico-Canada Agreement (USMCA). Its strict rules of origin — ${a('requiring 75% North American content in autos', LAMP)}, with 40–45% of labor value coming from workers earning at least $16 per hour — were designed to pull production from Asia toward the continent. They worked, but they also created a supply chain highly sensitive to political disruption.`,
+            `Donald Trump's return to the White House has introduced significant turbulence. In early 2025, his administration invoked emergency trade powers to impose ${a('25% blanket tariffs on Mexico', WILSON)}, citing fentanyl and migration concerns. Mexican President Claudia Sheinbaum's measured response — deploying 10,000 National Guard troops to the border and extraditing cartel operatives — eventually secured an exemption for USMCA-compliant goods. But 25% tariffs on automobiles, 50% on steel and aluminum, and 25% on medium and heavy trucks remain in effect. In February 2026, a federal court struck down a key portion of the tariff regime, though a new global surcharge followed days later. The net effect is uncertainty rather than collapse. ${a('Mexico\'s effective U.S. tariff rate on compliant goods sits around 2.3%', WILSON)}, far below the global average, but manufacturers are hesitating. Monterrey's industrial vacancy rate tripled, roughly $10 billion in investment announcements are on hold, and the most symbolic project of all, ${a('Tesla\'s planned gigafactory in Santa Catarina', REST_OF_WORLD)}, remains paused more than two years after Elon Musk's 2023 announcement. The USMCA joint review opening July 1, 2026 will determine whether the legal foundations of the nearshoring boom hold.`,
+          ],
+        },
+        {
+          heading: 'The Binding Constraint: Water',
+          paragraphs: [
+            `The harder limit facing Northeast Mexico is not a tariff. In the summer of 2022, Monterrey — a metropolitan area of 5.3 million people — nearly ran out of water. ${a('The Cerro Prieto reservoir fell to 0.5% of capacity', MDPI_WATER)}. Taps ran for only six hours a day. Tanker-truck lines stretched for blocks, scuffles broke out, and then-President Andrés Manuel López Obrador declared the situation a national security crisis. Only a fortuitous tropical storm averted total collapse.`,
+            `The crisis was not simply a drought. It reflected a structural mismatch between the region's ecological capacity and its industrial ambitions. ${a('Nuevo León sits atop a semi-arid watershed; 13 of its 23 aquifers are already classified as overexploited', MDPI_WATER)}. Researchers project that ${a('water availability in northern Mexico will fall below 1,600 cubic meters per person per year by 2030', MDPI_WATER)} — down from 3,000 in 1960. Yet industrial water concessions in the state amount to roughly 100 times the share allocated for domestic use, according to federal water agency data. Five beverage companies alone, including Heineken and Coca-Cola, draw 16% of the state's industrial water. Ternium's steel complex holds concessions for over 14.6 million cubic meters per year and is currently completing a $4 billion expansion.`,
+            `The Tesla controversy crystallized the politics of water in the starkest terms. When the gigafactory was first announced, critics immediately pointed to Monterrey's water crisis. Before approving the project, López Obrador said Nuevo León was unsuitable because "there is no water." ${a('Governor Samuel García\'s response became infamous', REST_OF_WORLD)}: he assured investors that Nuevo León had enough water for companies, even if not for household consumption. Protesters filled the streets chanting "No es sequía, es saqueo" — it's not drought, it's plunder. Neighboring Coahuila adds an air quality dimension. The state produces the majority of Mexico's coal and hosts two of three national coal-fired power plants. ${a('The escalating water and energy demand linked to increased economic activity is already triggering political and social conflicts', MDPI_WATER)} among different users across the region. As energy-intensive nearshoring facilities multiply, pressure on an already-stressed grid and on local air quality will only grow.`,
+          ],
+          imageAfterParagraph: { 0: '/images/northeast-cerro-prieto.png' },
+        },
+        {
+          heading: 'Policy Contradictions No One Is Resolving',
+          paragraphs: [
+            `Sheinbaum's Plan México, announced in January 2025, promises ${a('$277 billion in public and private investment across 2,000 projects', WILSON)}, with tax deductions designed to attract manufacturing and a 45% renewables target by 2030. It is explicitly designed to capitalize on nearshoring. Yet the same administration's 2025 energy reforms guarantee the state utility, CFE, at least 54% of national electricity generation, dissolved independent regulators, and have stalled private clean-power contracts, even as 70% of Mexico's natural gas is imported from Texas. Wilson Center analysts have warned that these ${a('energy reforms could themselves threaten USMCA compliance', WILSON)} and the stable, affordable electricity that manufacturers require. Federal water policy creates a parallel contradiction: a pending constitutional amendment would prioritize domestic water use over commercial concessions, a direct threat to the industrial investment that economic policy is simultaneously courting.`,
+            `At the state level, Nuevo León has pursued infrastructure fixes, including the El Cuchillo II Aqueduct and La Libertad Dam. Water experts caution that these are stopgap measures. ${a('Around 70% of Mexico\'s water concessions are held by just 7% of concessionaires', MDPI_WATER)}, indicating a deeply unequal distribution of resources that new infrastructure alone cannot fix. Mexico has also been releasing water from El Cuchillo to fulfill its treaty obligations to Texas under the 1944 Rio Grande Water Treaty, tightening an already-stressed supply.`,
+          ],
+        },
+        {
+          heading: 'Growth on a Deficit',
+          paragraphs: [
+            `Northeast Mexico's nearshoring boom is not a mirage. The factories, the jobs, and the trade flows are real, and USMCA's legal architecture, despite Trump's tariff pressure, continues to shelter the region from the worst disruptions. But the boom is being built on two credit lines the region may not be able to extend indefinitely: the political patience of a U.S. administration that increasingly views tariffs as a permanent feature, and a physical environment whose aquifers, reservoirs, and air quality were already under stress before the latest wave of industrial investment arrived. The analytical question for policymakers on both sides of the border is not whether nearshoring delivers growth; it plainly does. ${a('The global reconfiguration of value chains is a complex, multifaceted process', LAMP)}, and Mexico's geographic and trade advantages make it uniquely positioned to benefit. But whether Nuevo León can extract industrial value at this scale without draining itself dry is an open question. ${a('Governor García\'s now-notorious line about water for companies but not for people', REST_OF_WORLD)} was intended to reassure investors. The deeper it sinks in, the more it should worry them instead.`,
+          ],
+        },
+      ],
+    },
+  ],
   northwest: [
     {
       id: 'article-1',
@@ -124,6 +197,59 @@ const articlesByRegion: Record<string, Article[]> = {
           heading: 'Conclusion',
           paragraphs: [
             `Northwest Mexico has experienced more and more nearshoring as a result of its increasing economic reliance on the United States. Its proximity to the U.S. also allows trade— both legal and illicit— to flourish. Simultaneously, crime has continued to increase in Northwest Mexico, specifically in cities like Tijuana, Ciudad Juarez, and Chihuahua. The findings of Garriga and Phillips indicate that reducing fragmentation among criminal groups— or strengthening state capacity to limit their influence— may be more important for attracting investment than reducing overall violence levels alone. This suggests that policies focused on improving local and federal capacity to confront the cartels may be more effective than those that simply respond to visible indicators of violence. Crime trends in Mexico appear to be driven more by cartel fragmentation and competition than by levels of foreign direct investment. Additionally, cartels will continue to operate as long as local governments lack the capacity to stop them. Discouraging foreign investment is unlikely to reduce crime and may instead undermine economic opportunities. A more effective approach is to promote nearshoring while simultaneously strengthening institutions to address the underlying drivers of organized crime. Mexico should continue to attract foreign investment while investing in infrastructure, education, and institutional capacity to support long-term economic growth.`,
+          ],
+        },
+      ],
+    },
+  ],
+  central: [
+    {
+      id: 'article-1',
+      title: 'Exacerbating Insecurity: Law Enforcement Corruption in Mexico City',
+      author: 'Lucy Bird',
+      abstract: 'This essay examines how law enforcement corruption contributes to insecurity in Mexico City, challenging narratives that focus solely on organized crime. The analysis highlights two key mechanisms: the use of excessive force for coercion and personal gain, and the targeting of vulnerable populations for exploitation. These practices erode public trust, reduce cooperation with authorities, and weaken the state\'s ability to maintain security. The essay also emphasizes how institutional weaknesses, including poor working conditions and limited accountability, sustain these dynamics and complicate reform efforts.',
+      excerpt: 'Law enforcement corruption in Mexico City — through excessive force, exploitation of vulnerable populations, and eroded public trust — is itself a driver of insecurity, not merely a symptom of it.',
+      sections: [
+        {
+          paragraphs: [
+            'Conversations surrounding security in Mexico are often framed through the lens of organized crime and drug cartels. However, insecurity is not driven solely by external criminal actors; it is also shaped by the institutions responsible for maintaining public safety. Law enforcement in Mexico City exemplifies this contradiction. The city\'s preventive police system is large but fragmented, consisting of regular police, auxiliary forces, and specialized units. A significant share of these officers operate under irregular employment conditions, lacking full labor rights and operating with considerable autonomy. While formally tasked with protecting citizens, elements within the police force contribute directly to the persistence of insecurity by facilitating coercive practices and enabling the exploitation of vulnerable populations, ultimately eroding public trust.',
+          ],
+        },
+        {
+          heading: 'Defining Corruption',
+          paragraphs: [
+            `Corruption within Mexico City's law enforcement can be understood through two primary forms: predatory and strategic corruption. Predatory corruption occurs when officers use their authority for personal gain, such as requesting bribes in exchange for avoiding arrest. In contrast, strategic corruption is embedded in institutional practices and is often justified by informal norms or hierarchical pressures. This form includes coercive tactics such as forced confessions, planted evidence, or the manipulation of charges to meet internal expectations. Both understandings of corruption undermine the foundational purpose of policing so that, rather than serving the public, law enforcement becomes a mechanism for private benefit or institutional convenience.`,
+            `Evidence suggests these practices are systemic rather than isolated. Thousands of complaints alleging bodily harm and violations of personal liberty point to a persistent pattern of misconduct within Mexico City's ${a('police force', SILVA)}.`,
+          ],
+        },
+        {
+          heading: 'Excessive Force as a Mechanism of Corruption',
+          paragraphs: [
+            `One of the clearest ways corruption contributes to insecurity is through excessive force. Police brutality in Mexico City is not only a matter of over-enforcement but is frequently tied to efforts to extract personal or financial gain. ${a('Carlos Silva Forné', SILVA)}, a researcher at the Institute for Legal Research, identifies the pursuit of monetary benefit as a key driver of police violence. His analysis of complaints filed with the Mexico City Human Rights Commission between 2007 and 2011 finds that a meaningful share (10.3 percent) of cases involving violations of physical integrity were linked to corruption or personal gain.`,
+            'In these situations, force is not incidental but instrumental. Officers may resort to violence to compel confessions or pressure detainees into paying bribes. This overlap between police brutality and corruption reveals how law enforcement practices can actively generate insecurity. Rather than deterring crime, these actions contribute to an environment in which violence is normalized, and citizens face threats not only from criminals but from state actors themselves. When individuals cannot distinguish between legitimate law enforcement and predatory behavior, the perceived risk of interacting with law enforcement increases, further destabilizing public safety.',
+          ],
+        },
+        {
+          heading: 'Targeting Vulnerable Populations',
+          paragraphs: [
+            `Corruption within policing disproportionately affects vulnerable populations, such as low-income residents, migrants, and informal workers. Officers often perceive these groups as less capable of asserting their rights or pursuing legal recourse. As a result, they become primary targets for extortion and abuse. Former Mexico City police officer ${a('Jaime Ramón Bernal García', SILVA)} noted that officers frequently target such individuals precisely because they are less likely to challenge misconduct.`,
+            `Recent ${a('cases', NYT_CDMX)} illustrate how these dynamics unfold in practice. In one instance, a young man was detained by police officers and pressured to confess to a murder he did not commit. When he refused, officers reportedly subjected him to near suffocation, forcing a confession that was later dismissed in court due to evidence of torture. In another case, a worker was abducted and beaten by individuals later revealed to be police officers, who demanded a substantial bribe in exchange for his release. When payment was not provided, he was formally charged with a crime. These incidents highlight how law enforcement authority can be weaponized to extract resources from individuals, particularly those with limited means.`,
+            'As seen with the use of excessive force, these practices have profound implications for public trust. When citizens view the police as predatory rather than protective, they are less likely to cooperate with investigations when facing external criminal forces and more likely to take matters into their own hands. This erosion of trust creates a feedback loop: reduced cooperation weakens law enforcement effectiveness, which in turn allows criminal activity to persist. In this way, corruption within policing not only harms individuals directly but also undermines the state\'s broader capacity to maintain security.',
+          ],
+        },
+        {
+          heading: 'Institutional Challenges',
+          paragraphs: [
+            `Institutional weaknesses within Mexico City's police force play a critical role in enabling corruption, as poor organizational capacity creates conditions in which misconduct can thrive. ${a('Research by Elena Azaola', AZAOLA)} highlights widespread dissatisfaction among police officers, driven by poor working conditions and a lack of institutional support. Drawing on a qualitative study of 200 preventive officers, Azaola finds that many officers experience a sense of abandonment that diminishes their commitment to professional standards.`,
+            'Within this context, corruption emerges through multiple pathways. For some officers, it functions as a survival strategy to supplement low wages. For others, it represents an expected benefit of the profession. Crucially, these practices are not confined to individual behavior but are reinforced by informal networks within the institution. These networks operate through unwritten agreements that prioritize personal and political relationships over formal rules, effectively creating a parallel system of governance. In some cases, officers are diverted from their official duties to provide private security for political elites or other influential individuals, therefore blurring the line between public service and private interest. These practices reinforce a system in which accountability is limited and corruption is embedded within institutional structures.',
+            'These institutional dynamics make reform particularly challenging. Efforts to address corruption must address not only individual misconduct but also entrenched practices and incentives that sustain it. Without strengthening institutional capacity and accountability, corruption will continue to undermine law enforcement effectiveness.',
+          ],
+        },
+        {
+          heading: 'Conclusion',
+          paragraphs: [
+            'Law enforcement corruption in Mexico City plays a central role in exacerbating insecurity. Through the strategic use of excessive force, the systematic targeting of vulnerable populations, and the erosion of public trust, corrupt practices transform policing into a source of risk rather than protection. Institutional weaknesses further entrench these dynamics, embedding corruption within the police force\'s structure.',
+            'Understanding this relationship is essential for both domestic and international policy discussions. Mexico City serves as a critical case study for understanding the role institutions play in perpetuating instability across the country. Moreover, these dynamics have implications beyond Mexico\'s borders. Issues such as migration and transnational crime are shaped in part by internal conditions of security and governance. When law enforcement institutions fail to provide reliable protection, they contribute to patterns of instability with regional consequences. Addressing corruption within policing is therefore not only a matter of improving public safety within Mexico City, but also a key component of broader efforts to strengthen governance and security across North America.',
           ],
         },
       ],
@@ -251,6 +377,58 @@ const articlesByRegion: Record<string, Article[]> = {
             `Displacement in both states is widespread and often sudden. The IDMC reports thousands displaced annually, with entire villages fleeing massacres, extortion demands, or recruitment ${a('threats', FLEEING)}. Indigenous communities are especially vulnerable due to territorial encroachment and limited state protection. Displaced families move to nearby urban centers, other states, or—when networks or resources allow—the United States. However, most remain unregistered and lack access to services.`,
             'Violence-driven migration from Michoacán and Guerrero has surged in recent years. Many migrants now cite extortion, recruitment, or threats as primary reasons for fleeing. Smuggling networks—often controlled by the same cartels causing displacement—charge migrants for safe passage. Failure to pay can result in kidnapping or death. The U.S.–Mexico border has become the world\'s deadliest migration route, with hundreds of deaths annually.',
             'Migration from this region increasingly comes from duress: extortion destroys livelihoods, recruitment threats endanger youth, territorial control restricts movement and access to markets, disappearances create pervasive fear, and gender-based violence forces women and girls to flee. Migration becomes a survival strategy, not a choice.',
+          ],
+        },
+      ],
+    },
+  ],
+  southwest: [
+    {
+      id: 'article-1',
+      title: 'Chiapas, NAFTA, and Thirty Years of Broken Promises',
+      author: 'Christopher Duarte',
+      abstract: 'On January 1, 1994, the Ejército Zapatista de Liberación Nacional (EZLN) launched an armed uprising in Chiapas, Mexico, timed deliberately to NAFTA\'s implementation. This essay argues that the Zapatistas\' diagnosis was correct: the trade agreement, combined with the 1992 gutting of Article 27\'s ejido protections, structurally deepened poverty and dispossession for indigenous communities. Three decades on, Chiapas remains Mexico\'s poorest state, with roughly 66% of its population in poverty — a figure nearly unchanged since the rebellion — while an active cartel war has produced mass forced displacement that indigenous autonomy alone cannot contain.',
+      abstractImage: '/images/chiapas-ezln.png',
+      excerpt: 'Thirty years after the Zapatista uprising, NAFTA\'s structural damage to Chiapas\'s indigenous communities remains visible in poverty rates, broken accords, and a cartel war the state never prevented.',
+      sections: [
+        {
+          heading: 'A State Designed for Extraction',
+          paragraphs: [
+            `Before the first shot was fired, Chiapas was already a textbook case of what scholars call an "internal periphery" — a region rich in resources that systematically exports that wealth while its population goes without. The state generated roughly half of Mexico's hydroelectric power and sat atop significant petroleum reserves. And yet, on the eve of NAFTA, nearly two-thirds of residents lacked sewage access, only a third had electricity, and approximately half had no potable water. In the Lacandón Jungle region that would become the Zapatista heartland, ${a('48% of adults were illiterate', SIPAZ_II)}. Infant mortality in indigenous municipalities stood at 55.1 per 1,000 live births, equivalent to Mexico's national average a full decade earlier.`,
+            `This was not an accident of geography. By 1988, 4,714 "certificates of inaffectability" — 95% of all such certificates issued nationally since 1934 — shielded roughly 70% of Chiapas cattle-grazing land from redistribution. The same families who owned the land held the municipal offices, the judicial posts, and the PRI party structures. As one campesino leader ${a('told the Christian Science Monitor', CSM)} in March 1994: "The cattle ranchers are the mayors, the judges, and the PRI officials. We have no place to turn." The 1989 collapse of the International Coffee Agreement pushed tens of thousands more smallholders to the brink, and the EZLN — founded clandestinely in 1983 and led by the mestizo philosopher later unmasked as ${a('Subcomandante Marcos', BRITANNICA_MARCOS)} — spent a decade quietly building its base among them.`,
+          ],
+          imageAfterParagraph: { 1: '/images/chiapas-poverty-map.png' },
+        },
+        {
+          heading: 'Why January 1',
+          paragraphs: [
+            'The Zapatistas chose New Year\'s Day 1994 for a reason beyond symbolism. Their First Declaration of the Lacandón Jungle named NAFTA explicitly: the trade agreement was, in Marcos\'s view, a death sentence for the indigenous peoples of Mexico. The reasoning was concrete and, as events confirmed, accurate.',
+            `NAFTA's agricultural provisions were devastating. Mexico agreed to a 15-year phaseout of corn tariffs that negotiators effectively compressed to 30 months. ${a('Real Mexican corn prices fell an estimated 50–68% between 1993 and 2005', IATP)}. U.S. corn exports to Mexico nearly quadrupled in NAFTA's first decade. ${a('Between 1.1 and 2 million small farmers lost their livelihoods', PUBLIC_CITIZEN)}. But the deeper provocation was the ${a('1992 reform to Article 27', ARTICLE27)} of the Constitution — the Zapata-era clause that made communal ejido lands inalienable. The reform ended obligatory land redistribution and permitted the privatization and sale of ejidos. This was the rural counterpart of NAFTA itself: the trade deal would flood Mexico with cheap imported corn, and the Article 27 amendment ensured that dispossessed campesinos would have no legal claim to ancestral land. Together, the two reforms amounted to a coordinated dismantling of the legal infrastructure that had protected indigenous land tenure since the Revolution.`,
+          ],
+        },
+        {
+          heading: 'Accords That Were Never Honored',
+          paragraphs: [
+            `On January 1, 1994, roughly 3,000 lightly armed combatants seized San Cristóbal de las Casas, Ocosingo, Las Margaritas, and several other Chiapas towns. Between 145 and 300 people died in twelve days of fighting before a 100,000-person march in Mexico City pressured a ceasefire. Negotiations produced the ${a('San Andrés Accords', SAN_ANDRES)} in February 1996, committing Mexico to constitutional recognition of indigenous peoples with rights to autonomy, self-determination, and territorial control. Zedillo rejected the implementing legislation. What followed was deliberate paramilitarization: on December 22, 1997, Máscara Roja paramilitaries massacred 45 Tzotzil members of the pacifist group Las Abejas inside a chapel at Acteal while soldiers at a nearby outpost did not intervene. The state formally apologized in 2020. No senior official was ever convicted.`,
+            'When Vicente Fox broke the PRI\'s 71-year grip in 2000, he promised to solve Chiapas "in fifteen minutes." In 2001, Comandanta Esther became the first indigenous woman ever to address Mexico\'s Congress. Months later, Congress passed a gutted amendment that stripped out territorial rights and collective legal standing. The Supreme Court ruled it had no authority to review. The institutional path closed entirely.',
+          ],
+        },
+        {
+          heading: 'The Autonomous Communities',
+          paragraphs: [
+            `Faced with a state that had repeatedly broken its word, the EZLN built its own. In August 2003, they established caracoles housing Juntas de Buen Gobierno, coordinating thirty-eight Rebel Zapatista Autonomous Municipalities, governed on the principle of mandar obedeciendo (rule by obeying). Autonomous schools, clinics, and cooperative economies functioned for two decades without a peso of government funding. By 2005, 84.2% of Zapatista children were fully vaccinated versus 74.8% in nearby government-aligned communities. But the achievements could not overcome the structural math. By 2024, ${a('Chiapas poverty stood at 66%', BBVA)} — still the highest in Mexico, against a national rate of 29.6%. Roughly 29% of residents remain in extreme poverty. Indigenous-language speakers nationwide showed zero poverty reduction between 2018 and 2022. Meanwhile, López Obrador's ${a('Tren Maya megaproject was declared a matter of national security', TREN_MAYA)} in 2023 to bypass over fifty indigenous legal injunctions.`,
+          ],
+        },
+        {
+          heading: 'The Cartel War',
+          paragraphs: [
+            `Since 2021, Chiapas has become an active battlefield between the Sinaloa Cartel and CJNG, ${a('fighting for trafficking routes along the 960-kilometer Guatemalan border', INSIGHT_CRIME_CHIAPAS)}. The ${a('Frayba human rights center documented 20 forced-displacement events affecting 15,780 people', SIPAZ_VIOLENCE)} between January 2023 and June 2024. Official homicide data recorded 620 killings in 2024 — the highest year on record. Zapatista territory was not spared: paramilitary attacks killed seven community members in 2023, and in October 2024 Father Marcelo Pérez Pérez was assassinated outside a San Cristóbal church despite Inter-American Commission protective orders. In November 2023, the ${a('EZLN dissolved its autonomous municipalities and closed the caracoles to outsiders', SCHOOLS_CARTEL)}, announcing a new decentralized structure of hyperlocal Gobiernos Autónomos Locales.`,
+          ],
+        },
+        {
+          heading: 'The Verdict on a Prediction',
+          paragraphs: [
+            `The Zapatistas' argument in 1994 was analytical as much as political: NAFTA, combined with the gutting of ejido protections, would deepen rural poverty, accelerate dispossession, and leave indigenous communities more vulnerable to external extraction. Thirty-two years of data confirm that diagnosis. The ${a('San Andrés Accords were never honored', SIPAZ_I)}. Corn self-sufficiency collapsed — ${a('Mexico now imports 38% of its corn, up from 7% before NAFTA', IATP)}. The cartel violence tearing through Chiapas today is the predictable consequence of agricultural liberalization, rural abandonment, and three decades of broken state promises. The EZLN achieved real things: schools that outperformed state equivalents, a governance model that influenced movements worldwide, a political vocabulary that ended the fiction of Mexican monoculturalism. But the Zapatistas were right about the essential thing: you cannot dismantle the legal infrastructure that protects subsistence farmers, flood their markets with subsidized imports, and then be surprised when the result is poverty, dispossession, and eventually violent criminal rule. That is not a natural disaster. It is a policy outcome — and the unfinished business of U.S.–Mexico relations.`,
           ],
         },
       ],

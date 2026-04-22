@@ -251,6 +251,13 @@
   position: relative;
 }
 
+.ap-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .ap-image::before {
   content: '';
   position: absolute;
@@ -407,10 +414,13 @@
 
 /* ── Responsive ───────────────────────────────────── */
 @media (max-width: 768px) {
-  .ap-header { padding: 7rem 1.5rem 3rem; }
-  .ap-body { padding: 2rem 1.5rem; }
-  .ap-end { padding: 0 1.5rem 3rem; }
+  .ap-header { padding: 6rem 1.25rem 2rem; }
+  .ap-body { padding: 1.5rem 1.25rem 2rem; }
+  .ap-end { padding: 0 1.25rem 3rem; }
   .ap-image { margin: 2rem 0; }
-  .ap-nav { padding: 1rem 1.5rem; }
-  .ap-next { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+  .ap-nav { padding: 1rem 1.25rem; }
+  .ap-next { flex-direction: column; text-align: center; padding: 2rem 1.25rem; }
+  .ap-body figure { margin: 1.25rem 0; }
+  .ap-pull-stat { padding: 1.75rem 1rem; }
+  .ap-pull-number { font-size: 2.75rem; }
 }

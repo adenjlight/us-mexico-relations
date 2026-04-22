@@ -82,6 +82,9 @@ export default function ArticlePage() {
         {realArticle?.abstract && (
           <p className="ap-abstract">{realArticle.abstract}</p>
         )}
+        {realArticle?.abstractImage && (
+          <div className="ap-image"><img src={realArticle.abstractImage} alt="" /></div>
+        )}
       </header>
 
       <div className="ap-body">
@@ -90,7 +93,12 @@ export default function ArticlePage() {
             <div key={si}>
               {section.heading && <h2>{section.heading}</h2>}
               {section.paragraphs.map((para, pi) => (
-                <p key={pi} className={si === 0 && pi === 0 ? 'drop-cap' : undefined} dangerouslySetInnerHTML={{ __html: para }} />
+                <div key={pi}>
+                  <p className={si === 0 && pi === 0 ? 'drop-cap' : undefined} dangerouslySetInnerHTML={{ __html: para }} />
+                  {section.imageAfterParagraph?.[pi] && (
+                    <div className="ap-image"><img src={section.imageAfterParagraph[pi]} alt="" /></div>
+                  )}
+                </div>
               ))}
             </div>
           ))
