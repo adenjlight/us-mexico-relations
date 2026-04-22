@@ -25,6 +25,8 @@ import { westCriminalFragmentation } from './articles/west-criminal-fragmentatio
 import { southwestChiapas } from './articles/southwest-chiapas';
 import { southeastTourism } from './articles/southeast-tourism';
 import { southeastYucatan } from './articles/southeast-yucatan';
+import { southeastMigration } from './articles/southeast-migration';
+import { southeastCartelStability } from './articles/southeast-cartel-stability';
 import { northCentralFuelTheft } from './articles/north-central-fuel-theft';
 import { northCentralNearshoringBoom } from './articles/north-central-nearshoring-boom';
 
@@ -34,7 +36,7 @@ const articlesByRegion: Record<string, Article[]> = {
   central: [centralCorruption],
   west: [westCoastalAgriculture, westCriminalFragmentation],
   southwest: [southwestChiapas],
-  southeast: [southeastTourism, southeastYucatan],
+  southeast: [southeastTourism, southeastYucatan, southeastMigration, southeastCartelStability],
   'north-central': [northCentralFuelTheft, northCentralNearshoringBoom],
 };
 

@@ -1,7 +1,7 @@
 export const northCentralNearshoringBoom = {
   id: 'article-2',
   title: 'Industrial Policy or Global Forces? Explaining the Bajío\'s Nearshoring Boom',
-  author: 'Christopher Duarte',
+  author: 'Oliver Manko',
   abstract: 'The rapid growth of the Bajío raises a key question about what drives regional development. This post argues that while Guanajuato\'s industrial policy created the foundation for growth, broader forces like trade integration and global supply chain shifts have been more decisive. The region\'s success reflects how local policy becomes effective when it aligns with external economic dynamics.',
   excerpt: 'While Guanajuato\'s industrial policy laid the groundwork, trade integration and global supply chain shifts have been the more decisive forces behind the Bajío\'s nearshoring boom.',
   sections: [
