@@ -91,11 +91,15 @@ export default function PodcastPage() {
           <div className="pp-citations">
             <span className="pp-citations-label">Sources</span>
             <ol className="pp-citations-list">
-              {podcast.citations.map((url, i) => (
-                <li key={i}>
-                  <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
-                </li>
-              ))}
+              {podcast.citations.map((c, i) => {
+                const url = typeof c === 'string' ? c : c.url;
+                const label = typeof c === 'string' ? c : c.label;
+                return (
+                  <li key={i}>
+                    <a href={url} target="_blank" rel="noopener noreferrer">{label}</a>
+                  </li>
+                );
+              })}
             </ol>
           </div>
         )}
