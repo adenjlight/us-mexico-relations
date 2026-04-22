@@ -151,6 +151,15 @@
 }
 
 
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 768px) {
+  .map-bg { padding: 2vh 0; }
+  .hero-section { padding: 0 20px; }
+  .hero-sub { font-size: 1rem; }
+  .body-section { padding: 48px 20px; }
+  .scroll-cue { bottom: 1.5rem; }
+}
+
 /* ── Map spacer — transparent, lets fixed map show through ── */
 .map-section {
   height: 100vh;

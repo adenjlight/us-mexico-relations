@@ -97,7 +97,7 @@ export const regions: Region[] = [
     hoverColor: '#c86840',
     states: ['Mexico City', 'State of Mexico', 'Puebla', 'Tlaxcala', 'Morelos', 'Querétaro'],
     population: '38.5M',
-    description: 'Anchored by Mexico City and the surrounding Valley of Mexico — the political, economic, and cultural core of the country, where ancient civilizations, colonial history, and modern governance converge.',
+    description: 'Central Mexico, centered around Mexico City and the Valley of Mexico, stands at the heart of the country\'s political, economic, and cultural life. Mexico City functions as the seat of government and drives national policymaking. Beyond its political role, the region is a critical hub for manufacturing and trade, with strong ties to integrated U.S.-Mexico supply chains. As both an economic engine and administrative center, changes in Central Mexico carry significant consequences for regional stability and the broader U.S.-Mexico relationship.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Ciudad.de.Mexico.City.-_Paseo.Reforma.Skyline_CDMX_2016_%28cropped%29.jpg',
     imageAlt: 'Paseo de la Reforma, Mexico City',
     imageCredit: 'Wikimedia Commons',
