@@ -25,6 +25,7 @@ export const regions: Region[] = [
     hoverColor: '#d09050',
     states: ['Baja California', 'Baja California Sur', 'Sonora', 'Sinaloa'],
     population: '10.5M',
+    description: 'Northwest Mexico is a critical area with respect to the geopolitical relationship between Mexico and the United States. Its geographical location makes it susceptible to drought and heat waves, presenting issues with sustainability of critical resources like water and agriculture. Its proximity to the United States makes it a uniquely beneficial place for American companies to nearshore their operations, which has led to stability in employment in the area with little growth. Northwest Mexico is also a hub for migrants looking to seek asylum in the United States, but complicated immigration policy on the sides of both governments has led many migrants to settle indefinitely in border cities like Tijuana. These challenges will remain salient in future policy discussions between the United States and Mexico.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/1/1f/San_Isidro%2C_West_Coastal%2C_Baja_California_Sur%2C_Mexico.jpg',
     imageAlt: 'San Isidro, Baja California Sur',
     imageCredit: 'Wonderlane / Wikimedia Commons',
