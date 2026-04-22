@@ -3,6 +3,7 @@ export interface ArticleSection {
   paragraphs: string[];
   imageAfterParagraph?: Record<number, string>;
   imageMaxWidth?: Record<number, string>;
+  imageCaption?: Record<number, string>;
 }
 
 export interface Article {
@@ -29,6 +30,7 @@ import { southeastMigration } from './articles/southeast-migration';
 import { southeastCartelStability } from './articles/southeast-cartel-stability';
 import { northCentralFuelTheft } from './articles/north-central-fuel-theft';
 import { northCentralNearshoringBoom } from './articles/north-central-nearshoring-boom';
+import { eastVeracruzPetrochemical } from './articles/east-veracruz-petrochemical';
 
 const articlesByRegion: Record<string, Article[]> = {
   northeast: [northeastWater],
@@ -38,6 +40,7 @@ const articlesByRegion: Record<string, Article[]> = {
   southwest: [southwestChiapas],
   southeast: [southeastTourism, southeastYucatan, southeastMigration, southeastCartelStability],
   'north-central': [northCentralFuelTheft, northCentralNearshoringBoom],
+  east: [eastVeracruzPetrochemical],
 };
 
 export function getArticlesByRegion(slug: string): Article[] {

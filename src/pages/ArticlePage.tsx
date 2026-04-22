@@ -96,7 +96,10 @@ export default function ArticlePage() {
                 <div key={pi}>
                   <p className={si === 0 && pi === 0 ? 'drop-cap' : undefined} dangerouslySetInnerHTML={{ __html: para }} />
                   {section.imageAfterParagraph?.[pi] && (
-                    <div className="ap-image" style={section.imageMaxWidth?.[pi] ? { maxWidth: section.imageMaxWidth[pi], marginLeft: 'auto', marginRight: 'auto' } : undefined}><img src={section.imageAfterParagraph[pi]} alt="" /></div>
+                    <figure className="ap-image" style={section.imageMaxWidth?.[pi] ? { maxWidth: section.imageMaxWidth[pi], marginLeft: 'auto', marginRight: 'auto' } : undefined}>
+                      <img src={section.imageAfterParagraph[pi]} alt={section.imageCaption?.[pi] ?? ''} />
+                      {section.imageCaption?.[pi] && <figcaption>{section.imageCaption[pi]}</figcaption>}
+                    </figure>
                   )}
                 </div>
               ))}

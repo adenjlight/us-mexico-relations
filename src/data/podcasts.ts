@@ -40,6 +40,16 @@ const podcasts: Record<string, Podcast> = {
     author: 'Christopher Duarte',
     audioUrl: '/Audio/Duarte- Northeastern Mexican Governers Shared Stratergy.mp3',
   },
+  southeast: {
+    title: 'Militarization and the Tren Maya',
+    description: 'This episode analyzes how militarization associated with the Tren Maya project is reshaping everyday security in Mexico\'s Yucatán Peninsula. While the Mexican government, under President Andrés Manuel López Obrador, has relied on the military to accelerate infrastructure development and maintain control over construction, its continued presence warrants concern over long-term security outcomes. Drawing on reporting from NACLA and analysis from The Hill, it is clear that militarization does not eliminate insecurity but instead reorganizes it. Rather than confrontation, the region is characterized by a system in which military forces and organized crime operate in parallel. This dynamic produces a form of security that is visible and controlled, yet also tense and at odds. By focusing on how these changes are experienced in everyday life, the podcast highlights the broader implications of using military institutions as tools of development and governance.',
+    citations: [
+      { label: 'Wang, Irene. "The Militarization of Commercial Activity in Mexico." NACLA. August 13, 2025.', url: 'https://nacla.org/the-militarization-of-commercial-activity-in-mexico/' },
+      { label: 'Bernal, Rafael. "Far from the Border, Mexico\'s Safest State Is Moving Closer to the US." The Hill. March 2024.', url: 'https://thehill.com/latino/4498868-border-mexico-yucatan/' },
+    ],
+    author: 'Daniel Davis',
+    audioUrl: '/Audio/Daniel Davis Podcast PSC 3500.mp3',
+  },
   west: {
     title: 'Cartel Fragmentation and Violence',
     description: 'This episode examines how cartel fragmentation has become a major driver of violence and displacement across Mexico\'s Pacific states.',
@@ -58,18 +68,6 @@ const podcasts: Record<string, Podcast> = {
     ],
     author: 'Sydney Sharpley',
     audioUrl: '/Audio/Sharpley Podcast.mp3',
-  },
-  'north-central': {
-    title: 'Placeholder Podcast Title',
-    audioUrl: null,
-  },
-  southwest: {
-    title: 'Placeholder Podcast Title',
-    audioUrl: null,
-  },
-  southeast: {
-    title: 'Placeholder Podcast Title',
-    audioUrl: null,
   },
 };
 
