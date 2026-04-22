@@ -126,7 +126,7 @@ export const regions: Region[] = [
     hoverColor: '#e04458',
     states: ['Yucatán', 'Campeche', 'Quintana Roo'],
     population: '5.1M',
-    description: 'Spanning the Yucatán Peninsula — a region shaped by Maya civilization, Caribbean tourism, and a distinct cultural identity that has long stood apart from central Mexican politics and institutions.',
+    description: 'Southeast Mexico constitutes one of the country\'s most geographically distinct and culturally unique regions, encompassing the Yucatán Peninsula and the surrounding states of Yucatán, Quintana Roo, Campeche, Chiapas, and Tabasco. Its identity is shaped by its ecological diversity, Mayan heritage, and tourism industry. Historically, the region is most closely associated with the Maya civilization, one of the most advanced pre-Columbian societies in the Americas. The Mayan heritage of the southeast is visible through archaeological sites such as Chichén Itzá, Uxmal, and Calakmul. In the modern era, Southeast Mexico is composed of both rural and agrarian regions, as well as urban coastal regions. States such as Quintana Roo have undergone rapid urbanization driven by major tourism markets, with cities such as Cancún and Tulum functioning as major international destinations. Overall, Southeast Mexico represents a region of both cultural and historical significance, as well as economic importance.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Chichen_Itza_3.jpg',
     imageAlt: 'Chichén Itzá, Yucatán',
     imageCredit: 'Wikimedia Commons',

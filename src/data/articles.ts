@@ -15,6 +15,7 @@ export interface Article {
 }
 
 const SPRINGERLINK = 'https://link.springer.com/article/10.1186/s42055-020-00031-4/figures/3';
+const INGRAM_PATRICK = 'https://www.researchgate.net/profile/Scott-Ingram-2/publication/351133574_Human_securities_sustainability_and_migration_in_the_ancient_US_Southwest_and_Mexican_Northwest/links/615e429cfbd5153f47e9484b/Human-securities-sustainability-and-migration-in-the-ancient-US-Southwest-and-Mexican-Northwest.pdf';
 const CONAGUA_REPORT = 'https://sinav30.conagua.gob.mx:8080/Descargas/pdf/EAM2023_f.pdf';
 const ELDERLY = 'https://www.sciencedirect.com/science/article/abs/pii/S1474706515000789';
 const SPRINGER_NATURE = 'https://link.springer.com/article/10.1007/s00484-009-0283-7';
@@ -124,28 +125,29 @@ const articlesByRegion: Record<string, Article[]> = {
       excerpt: 'Environmental crises in Northwest Mexico — drought, heat waves, and aquifer overexploitation — are threatening human security in ways that echo a historic depopulation of the region 600 years ago.',
       sections: [
         {
-          heading: 'Environmental Impacts in Northwest Mexico',
+          paragraphs: [
+            `The narrative regarding security in Northwest Mexico is commonly agreed upon and fairly uniform: border proximity along with cartel violence causes instability in the region. But this narrative often leaves out a salient aspect of underdevelopment in Northwest Mexico, which I will discuss in this essay. In their ${a('paper', INGRAM_PATRICK)}, titled "Human securities, sustainability, and migration in the ancient U.S. Southwest and Mexican Northwest", Scott Ingram and Shelby Patrick describe several factors that led to displacement and a decline in population growth in the Southwest U.S. and Northwest Mexico from the 1300s–1400s, which they define as issues of "human security". Human security can be defined as "the totality of conditions (e.g. economic, food, health, etc.) that impact human beings". The authors show evidence of some of these conditions during depopulation in the Trincheras region (now known as the state of Sonora) up until 1450. But they do not find significant evidence of the environmental dimension of the human security index affecting the population there at that time. In this paper, I will argue that the environmental dimension has become a central issue affecting human security in Northwest Mexico in 2026. I will show evidence of human security being threatened in the region directly by climate change, and conclude by making a prediction about depopulation in the future. Mexico's extremely low water supply coupled with the effects of heatwaves and the overexploitation of aquifers in Baja California and Sonora are creating tangible health outcomes for the people living there.`,
+          ],
+        },
+        {
           paragraphs: [
             `Environmental impacts have become drastic in Northwest Mexico. The map below shows the ${a('water security index', SPRINGERLINK)} throughout the country as of 2020, with notable implications for the Northwest and Baja California.`,
             `<figure class="ap-figure"><img src="/images/northwest-water-security.png" alt="Global Water Security Index in Mexico, showing very low security in Baja California and Sonora" /><figcaption>Global Water Security Index in Mexico, from Springer Link</figcaption></figure>`,
           ],
         },
         {
-          heading: 'Drought',
           paragraphs: [
             `Drought has become arguably the worst environmental problem in Sonora and Baja California. According to a ${a('report from CONAGUA', CONAGUA_REPORT)}, Mexico's water commission, from 1991 until 2020 there has been less than 200 millimeters of rainfall in Baja California. That means that, on a basic year-to-year average, there was 6⅔ millimeters of rainfall per year during that time — an amount a person somewhere else could experience in one day, or even one hour. The situation in Sonora isn't much different, where there was between 200–600 millimeters of rain — depending on the area — during that 30-year period.`,
             `Additionally, the same report finds that areas of Baja California and Sonora had D3 levels of drought risk in May of 2022, which CONAGUA defines as "Major loss of crops and grass, the risk of forest fires is extreme, and restrictions on water use are widespread due to scarcity." During the same period, almost all of Baja California and Sonora were at a D2 risk. Drought has become a primary issue in Sonora and Baja California, and it is one of the factors that contributes most to human security problems in Northwest Mexico.`,
           ],
         },
         {
-          heading: 'Heat Waves',
           paragraphs: [
             `Heat waves have also become problematic for human security in the area. Drought has been exacerbated by heatwaves that have targeted more vulnerable populations, such as children and ${a('elderly people', ELDERLY)}. Heat waves can cause respiratory diseases and renal malfunction, phenomena that are more common in those populations. According to Martínez-Austria et al., "under global warming scenarios, it is expected that Baja California and Sonora States show the largest increases in temperature over the course of this century."`,
             `Another ${a('report published by Springer Nature', SPRINGER_NATURE)} does a particular case study of the Northwestern city of Mexicali, where many heat-wave attributed deaths have been reported this century. The authors define "heat days" (HDs) as days where the temperature exceeds the 90th percentile (44°C), and find that "with emissions scenario A2, for the 2020s, 2050s, and 2080s, the HDs will increase relative to the 1961–1990 period by 2.1, 3.6, and 5.1 times, respectively." They further argue that a growth in periods of intense heat will necessitate an increase in emergency planning efforts in the region in order to protect the elderly, mentally ill, and other vulnerable people. Not only is there evidence of environmental decline in Northwest Mexico, but it is starting to create conditions incompatible with life for the people that live there.`,
           ],
         },
         {
-          heading: 'Aquifer Overexploitation',
           paragraphs: [
             `A counter argument to the aforementioned points might be that there is no evidence of climate change that has been made specifically worse by humans. But this is not true. According to the ${a('Multidisciplinary Publishing Institute (MDPI)', MDPI)}, overexploitation of over 100 of Mexico's aquifers — underground layers of permeable rock that store groundwater used in reservoirs and springs — has had major implications for water and food security in the country. The article also points out that almost one-third of these aquifers — 31 in total — are located in Baja California Peninsula, Sonora, and the Central Mexican Plateau.`,
             `<figure class="ap-figure"><img src="/images/northwest-aquifers.png" alt="Map of overexploited aquifers in Mexico, 2021 and 2022" /></figure>`,
@@ -153,7 +155,6 @@ const articlesByRegion: Record<string, Article[]> = {
           ],
         },
         {
-          heading: 'Conclusion',
           paragraphs: [
             `Mexico's environmental problems are particularly prevalent in Northwest Mexico, where human security is currently threatened by droughts, heat waves, and human degradation of resources. The problem has both scientific and social dimensions, in which natural climate change processes combined with a lack of sustainability efforts have accelerated the climate crisis in the region. This will have implications for the safety of the people living in Northwest Mexico. Those that have less socio-economic mobility, such as children and the elderly, who are unable to simply move away when facing more dangerous living conditions, will face increased risk of developing diseases that are directly linked to climate change. On top of that, agriculture and economic self-sufficiency will become obsolete if farmers no longer have the means to grow food.`,
             `Northwest Mexico will inevitably face the threat of population decline if steps are not taken to address the impacts of climate change on human security. The area was depopulated before when human security was being threatened, and it is bound to happen again if the environment continues to be degraded.`,
@@ -174,13 +175,11 @@ const articlesByRegion: Record<string, Article[]> = {
           ],
         },
         {
-          heading: 'Evidence on Nearshoring and Violence',
           paragraphs: [
             `There is little evidence to suggest that the recent surge in nearshoring by American corporations to Mexico has contributed to an increase in violence. A ${a('Forbes article', FORBES_NEARSHORING)} highlights that, in 2023, only 12 cargo trucks were hijacked across the entire Baja California region, which is known for its cartel activity and for being a hub for nearshoring. This contrasts sharply with states like Estado de Mexico and Puebla, which saw thousands of truck hijackings that same year. Of course, this comparison should be interpreted cautiously. Differences in crime levels across states may reflect broader regional dynamics— such as cartel presence, local governance capacity, or geography— rather than the effects of nearshoring itself. However, the relatively low number of hijackings in a major nearshoring hub like Baja California suggests that increased foreign investment does not necessarily coincide with higher levels of this type of crime. Instead, there is no clear causal evidence between nearshoring and violence, highlighting the need to distinguish between correlation and causation when assessing the impact of nearshoring on criminal activity. While it may seem intuitive that increased economic activity would lead to more cartel violence, there is little evidence to support this claim.`,
           ],
         },
         {
-          heading: 'Cartel Fragmentation and Foreign Direct Investment',
           paragraphs: [
             `This does not mean that crime is completely irrelevant when considering the effects of nearshoring. Arguments to the contrary of the aforementioned points emphasize the volatility of the cartels when assessing the potential impact of nearshoring on cities in Northwest Mexico. Laura Calderon, director of the think tank Justice in Mexico, also highlights how Tijuana— which was a Sinaloa cartel stronghold in the past— has recently become contested after an alliance between the Jalisco Nueva Generación Cartel and Cartel de Tijuana was broken due to internal infighting. Now, three groups fight for control over Tijuana, contributing to the uptick in violence in the region. ${a('Data from Phillips and Garriga', GARRIGA_PHILLIPS)} confirms that there is a statistically significant negative correlation between FDI and the number of criminal groups in a state.`,
             `<figure class="ap-figure"><img src="/images/northwest-nearshoring-fdi.png" alt="Figure 4: Predictive margins of criminal groups on new foreign direct investment" /></figure>`,
@@ -188,13 +187,11 @@ const articlesByRegion: Record<string, Article[]> = {
           ],
         },
         {
-          heading: 'The Case for Nearshoring',
           paragraphs: [
             `Considering these two perspectives, nearshoring is still beneficial and should be encouraged in policymaking situations. A ${a('report by Luna Pizano and Domínguez', LUNA_PIZANO)} argues that nearshoring can be beneficial for the Mexican economy— if they take the necessary steps to facilitate its integration. They argue that Mexico still needs to develop the road, air, and port infrastructure to manage the scale of the workforce that would result from an increase in nearshoring. They claim that an increase in industrial parks would also improve conditions for nearshoring. As it stands, Baja California has ten ${a('industrial parks', ECONOMIA_SONORA)}, where there are "adequate location conditions with infrastructure, equipment, basic services and permanent administration that allows continuous operation," according to the ${a('Mexican Government', ECONOMIA_DATA)}. In terms of their working population and capacity for acquiring the labor for nearshoring, Sonora and Baja California also have excellent conditions: their unemployment rates are 2.57% and 2.16%, and their economically active populations are 60.1% and 60%, respectively. In both states, an extremely high proportion of the population that can work actually does work, which is good for American companies looking for cheaper labor costs and Mexican workers seeking employment.`,
           ],
         },
         {
-          heading: 'Conclusion',
           paragraphs: [
             `Northwest Mexico has experienced more and more nearshoring as a result of its increasing economic reliance on the United States. Its proximity to the U.S. also allows trade— both legal and illicit— to flourish. Simultaneously, crime has continued to increase in Northwest Mexico, specifically in cities like Tijuana, Ciudad Juarez, and Chihuahua. The findings of Garriga and Phillips indicate that reducing fragmentation among criminal groups— or strengthening state capacity to limit their influence— may be more important for attracting investment than reducing overall violence levels alone. This suggests that policies focused on improving local and federal capacity to confront the cartels may be more effective than those that simply respond to visible indicators of violence. Crime trends in Mexico appear to be driven more by cartel fragmentation and competition than by levels of foreign direct investment. Additionally, cartels will continue to operate as long as local governments lack the capacity to stop them. Discouraging foreign investment is unlikely to reduce crime and may instead undermine economic opportunities. A more effective approach is to promote nearshoring while simultaneously strengthening institutions to address the underlying drivers of organized crime. Mexico should continue to attract foreign investment while investing in infrastructure, education, and institutional capacity to support long-term economic growth.`,
           ],
