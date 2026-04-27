@@ -17,7 +17,7 @@ export interface Podcast {
 
 const podcasts: Record<string, Podcast> = {
   northwest: {
-    title: 'Migration',
+    title: 'Playing the Waiting Game: Migration through Tijuana',
     description: 'In this podcast, I discuss the issue of "forced immobility" in Tijuana. Migrants wait indefinitely in the border city to seek asylum in the United States\', whose immigration policy limits the amount of people who can apply on a daily basis. Follow along to hear about the challenges these migrants face with housing and basic needs.',
     author: 'Nico Schwartz',
     audioUrl: '/Audio/Schwartz Podcast U.S. MX Final.mp3',

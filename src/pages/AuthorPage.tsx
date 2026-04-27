@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { regions } from '../data/regions';
 import { getArticlesByRegion } from '../data/articles';
 import { getPodcastsByAuthor } from '../data/podcasts';
+import { getAuthorByName } from '../data/authors';
 import Masthead from '../components/Masthead';
 import './AuthorPage.css';
 
@@ -13,6 +14,8 @@ export default function AuthorPage() {
   const { authorSlug } = useParams<{ authorSlug: string }>();
   const authorName = slugToName(authorSlug ?? '');
 
+  const author = getAuthorByName(authorName);
+
   const authorArticles = regions.flatMap(region =>
     getArticlesByRegion(region.slug)
       .filter(a => a.author === authorName)
@@ -21,7 +24,7 @@ export default function AuthorPage() {
 
   const authorPodcasts = getPodcastsByAuthor(authorName);
 
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => { window.scrollTo(0, 0); }, [authorSlug]);
 
   return (
     <div className="aup-page">
@@ -34,7 +37,9 @@ export default function AuthorPage() {
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
           Back
         </Link>
+        {author?.role && <p className="aup-role">{author.role}</p>}
         <h1 className="aup-name">{authorName}</h1>
+        {author?.bio && <p className="aup-bio">{author.bio}</p>}
       </header>
 
       <div className="aup-body">

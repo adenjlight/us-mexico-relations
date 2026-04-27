@@ -1,9 +1,12 @@
+export interface ImageBlock {
+  image: string;
+  caption?: string;
+  maxWidth?: string;
+}
+
 export interface ArticleSection {
   heading?: string;
-  paragraphs: string[];
-  imageAfterParagraph?: Record<number, string>;
-  imageMaxWidth?: Record<number, string>;
-  imageCaption?: Record<number, string>;
+  paragraphs: (string | ImageBlock)[];
 }
 
 export interface Article {

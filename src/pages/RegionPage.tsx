@@ -6,21 +6,6 @@ import { getArticlesByRegion } from '../data/articles';
 import Masthead from '../components/Masthead';
 import './RegionPage.css';
 
-const PLACEHOLDER_ARTICLES = [
-  {
-    id: 'article-1',
-    title: 'Placeholder Article Title One',
-    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud.',
-    num: '01',
-  },
-  {
-    id: 'article-2',
-    title: 'Placeholder Article Title Two',
-    excerpt: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam feugiat vitae ultricies eget tempor sit amet.',
-    num: '02',
-  },
-];
-
 export default function RegionPage() {
   const { regionSlug } = useParams<{ regionSlug: string }>();
   const region = getRegionBySlug(regionSlug ?? '');
@@ -47,15 +32,14 @@ export default function RegionPage() {
     return () => observer.disconnect();
   }, []);
 
-  const realArticles = getArticlesByRegion(region?.slug ?? '');
-  const articles = realArticles.length > 0
-    ? realArticles.slice(0, region?.articleCount ?? realArticles.length).map((a, i) => ({
-        id: a.id,
-        title: a.title,
-        excerpt: a.excerpt,
-        num: String(i + 1).padStart(2, '0'),
-      }))
-    : PLACEHOLDER_ARTICLES.slice(0, region?.articleCount ?? PLACEHOLDER_ARTICLES.length);
+  const regionArticles = getArticlesByRegion(region?.slug ?? '');
+  const articles = regionArticles
+    .slice(0, region?.articleCount ?? regionArticles.length)
+    .map((a, i) => ({
+      id: a.id,
+      title: a.title,
+      num: String(i + 1).padStart(2, '0'),
+    }));
 
   if (!region) {
     return (

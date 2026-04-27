@@ -5,37 +5,16 @@ import { getArticle, getArticlesByRegion } from '../data/articles';
 import Masthead from '../components/Masthead';
 import './ArticlePage.css';
 
-const ARTICLES: Record<string, { title: string }> = {
-  'article-1': { title: 'Placeholder Article Title One' },
-  'article-2': { title: 'Placeholder Article Title Two' },
-  'article-3': { title: 'Placeholder Article Title Three' },
-};
-
-const BODY_PARAGRAPHS = [
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-  'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.',
-  'Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis.',
-  'Fusce fermentum. Nullam varius nulla nec sapien. Proin euismod, urna vel ultricies fringilla, est libero fermentum felis, sit amet malesuada purus lorem ut nunc. In nec felis. Donec ultrices urna. Nullam vulputate diam nec turpis. Sed consequat augue eget diam. Sed tincidunt.',
-];
-
 export default function ArticlePage() {
   const { regionSlug, articleId } = useParams<{ regionSlug: string; articleId: string }>();
   const region = getRegionBySlug(regionSlug ?? '');
   const progressRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
 
-  const realArticle = getArticle(regionSlug ?? '', articleId ?? '');
-  const fallbackMeta = ARTICLES[articleId ?? ''] ?? ARTICLES['article-1'];
-  const meta = realArticle ? { title: realArticle.title } : fallbackMeta;
-
+  const article = getArticle(regionSlug ?? '', articleId ?? '');
   const regionArticles = getArticlesByRegion(regionSlug ?? '');
-  const allIds = regionArticles.length > 0 ? regionArticles.map((a) => a.id) : Object.keys(ARTICLES);
-  const currentIndex = allIds.indexOf(articleId ?? '');
-  const nextId = allIds[currentIndex + 1];
-  const nextRealArticle = nextId ? getArticle(regionSlug ?? '', nextId) : null;
-  const nextMeta = nextId
-    ? { title: nextRealArticle?.title ?? ARTICLES[nextId]?.title ?? '' }
-    : null;
+  const currentIndex = regionArticles.findIndex((a) => a.id === articleId);
+  const nextArticle = regionArticles[currentIndex + 1] ?? null;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -70,60 +49,45 @@ export default function ArticlePage() {
           Back to {region?.name ?? 'Region'}
         </Link>
 
-        <h1>{meta.title}</h1>
-        {realArticle && (
+        {article ? <h1>{article.title}</h1> : <h1>Article not found</h1>}
+        {article && (
           <Link
-            to={`/author/${realArticle.author.toLowerCase().replace(/\s+/g, '-')}`}
+            to={`/author/${article.author.toLowerCase().replace(/\s+/g, '-')}`}
             className="ap-author"
           >
-            By {realArticle.author}
+            By {article.author}
           </Link>
         )}
-        {realArticle?.abstract && (
-          <p className="ap-abstract">{realArticle.abstract}</p>
+        {article?.abstract && (
+          <p className="ap-abstract">{article.abstract}</p>
         )}
-        {realArticle?.abstractImage && (
-          <div className="ap-image"><img src={realArticle.abstractImage} alt="" /></div>
+        {article?.abstractImage && (
+          <div className="ap-image"><img src={article.abstractImage} alt="" /></div>
         )}
       </header>
 
       <div className="ap-body">
-        {realArticle ? (
-          realArticle.sections.map((section, si) => (
+        {article ? (
+          article.sections.map((section, si) => (
             <div key={si}>
               {section.heading && <h2>{section.heading}</h2>}
-              {section.paragraphs.map((para, pi) => (
-                <div key={pi}>
-                  <p className={si === 0 && pi === 0 ? 'drop-cap' : undefined} dangerouslySetInnerHTML={{ __html: para }} />
-                  {section.imageAfterParagraph?.[pi] && (
-                    <figure className="ap-image" style={section.imageMaxWidth?.[pi] ? { maxWidth: section.imageMaxWidth[pi], marginLeft: 'auto', marginRight: 'auto' } : undefined}>
-                      <img src={section.imageAfterParagraph[pi]} alt={section.imageCaption?.[pi] ?? ''} />
-                      {section.imageCaption?.[pi] && <figcaption>{section.imageCaption[pi]}</figcaption>}
+              {section.paragraphs.map((block, bi) => {
+                if (typeof block !== 'string') {
+                  return (
+                    <figure key={bi} className="ap-image" style={block.maxWidth ? { maxWidth: block.maxWidth, marginLeft: 'auto', marginRight: 'auto' } : undefined}>
+                      <img src={block.image} alt={block.caption ?? ''} />
+                      {block.caption && <figcaption>{block.caption}</figcaption>}
                     </figure>
-                  )}
-                </div>
-              ))}
+                  );
+                }
+                return (
+                  <p key={bi} className={si === 0 && bi === 0 ? 'drop-cap' : undefined} dangerouslySetInnerHTML={{ __html: block }} />
+                );
+              })}
             </div>
           ))
         ) : (
-          <>
-            <p className="drop-cap">{BODY_PARAGRAPHS[0]}</p>
-            <p>{BODY_PARAGRAPHS[1]}</p>
-            <div className="ap-image"><span>Image placeholder</span></div>
-            <h2>Section heading</h2>
-            <p>{BODY_PARAGRAPHS[2]}</p>
-            <div className="ap-pull-stat">
-              <div className="ap-pull-number">$5.9B</div>
-              <div className="ap-pull-label">Placeholder statistic label</div>
-            </div>
-            <blockquote>
-              <p>Placeholder pull quote — a striking sentence from the article that encapsulates a key insight or argument.</p>
-              <cite>— Source Name, Institution</cite>
-            </blockquote>
-            <h2>Second section heading</h2>
-            <p>{BODY_PARAGRAPHS[3]}</p>
-            <p>{BODY_PARAGRAPHS[1]}</p>
-          </>
+          <p>This article could not be found.</p>
         )}
       </div>
 
@@ -134,11 +98,11 @@ export default function ArticlePage() {
           <div className="ap-line" />
         </div>
 
-        {nextMeta && (
-          <Link to={`/region/${regionSlug}/article/${nextId}`} className="ap-next">
+        {nextArticle && (
+          <Link to={`/region/${regionSlug}/article/${nextArticle.id}`} className="ap-next">
             <div>
               <div className="ap-next-label">Next article</div>
-              <div className="ap-next-title">{nextMeta.title}</div>
+              <div className="ap-next-title">{nextArticle.title}</div>
             </div>
             <div className="ap-next-arrow">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
