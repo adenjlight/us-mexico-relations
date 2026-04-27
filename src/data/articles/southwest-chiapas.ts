@@ -27,8 +27,8 @@ export const southwestChiapas = {
       paragraphs: [
         `Before the first shot was fired, Chiapas was already a textbook case of what scholars call an "internal periphery" — a region rich in resources that systematically exports that wealth while its population goes without. The state generated roughly half of Mexico's hydroelectric power and sat atop significant petroleum reserves. And yet, on the eve of NAFTA, nearly two-thirds of residents lacked sewage access, only a third had electricity, and approximately half had no potable water. In the Lacandón Jungle region that would become the Zapatista heartland, ${a('48% of adults were illiterate', SIPAZ_II)}. Infant mortality in indigenous municipalities stood at 55.1 per 1,000 live births, equivalent to Mexico's national average a full decade earlier.`,
         `This was not an accident of geography. By 1988, 4,714 "certificates of inaffectability" — 95% of all such certificates issued nationally since 1934 — shielded roughly 70% of Chiapas cattle-grazing land from redistribution. The same families who owned the land held the municipal offices, the judicial posts, and the PRI party structures. As one campesino leader ${a('told the Christian Science Monitor', CSM)} in March 1994: "The cattle ranchers are the mayors, the judges, and the PRI officials. We have no place to turn." The 1989 collapse of the International Coffee Agreement pushed tens of thousands more smallholders to the brink, and the EZLN — founded clandestinely in 1983 and led by the mestizo philosopher later unmasked as ${a('Subcomandante Marcos', BRITANNICA_MARCOS)} — spent a decade quietly building its base among them.`,
+        { image: '/images/chiapas-poverty-map.png' },
       ],
-      imageAfterParagraph: { 1: '/images/chiapas-poverty-map.png' } as Record<number, string>,
     },
     {
       heading: 'Why January 1',

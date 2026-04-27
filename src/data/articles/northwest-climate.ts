@@ -22,7 +22,7 @@ export const northwestClimate = {
     {
       paragraphs: [
         `Environmental impacts have become drastic in Northwest Mexico. The map below shows the ${a('water security index', SPRINGERLINK)} throughout the country as of 2020, with notable implications for the Northwest and Baja California.`,
-        `<figure class="ap-figure"><img src="/images/northwest-water-security.png" alt="Global Water Security Index in Mexico, showing very low security in Baja California and Sonora" /><figcaption>Global Water Security Index in Mexico, from Springer Link</figcaption></figure>`,
+        { image: '/images/northwest-water-security.png', caption: 'Global Water Security Index in Mexico, from Springer Link' },
       ],
     },
     {
@@ -40,7 +40,7 @@ export const northwestClimate = {
     {
       paragraphs: [
         `A counter argument to the aforementioned points might be that there is no evidence of climate change that has been made specifically worse by humans. But this is not true. According to the ${a('Multidisciplinary Publishing Institute (MDPI)', MDPI)}, overexploitation of over 100 of Mexico's aquifers — underground layers of permeable rock that store groundwater used in reservoirs and springs — has had major implications for water and food security in the country. The article also points out that almost one-third of these aquifers — 31 in total — are located in Baja California Peninsula, Sonora, and the Central Mexican Plateau.`,
-        `<figure class="ap-figure"><img src="/images/northwest-aquifers.png" alt="Map of overexploited aquifers in Mexico, 2021 and 2022" /></figure>`,
+        { image: '/images/northwest-aquifers.png' },
         `Additionally, the MDPI article mentions that "in some cases, for instance the Hermosillo (Sonora) coastal aquifer, excessive pumping has resulted in salt water intrusion and saltpeter presence in agricultural fields." This can have especially bad consequences for farmers, which is alarming for an area that is more reliant on agriculture when compared to others.`,
       ],
     },
