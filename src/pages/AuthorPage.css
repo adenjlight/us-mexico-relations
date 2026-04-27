@@ -33,25 +33,6 @@
 
 .aup-nav-logo span { color: var(--gold); }
 
-.aup-nav-links {
-  list-style: none;
-  display: flex;
-  gap: 28px;
-  margin: 0;
-  padding: 0;
-}
-
-.aup-nav-links a {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: color 0.2s;
-}
-
-.aup-nav-links a:hover { color: var(--cream); }
-
 /* ── Header ── */
 .aup-header {
   max-width: 760px;
@@ -80,6 +61,14 @@
   height: 14px;
 }
 
+.aup-role {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin: 0 0 12px;
+}
+
 .aup-name {
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
@@ -87,6 +76,14 @@
   font-weight: 700;
   line-height: 1.2;
   margin: 0;
+}
+
+.aup-bio {
+  margin: 20px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 600px;
 }
 
 /* ── Article list ── */
@@ -153,7 +150,6 @@
 /* ── Responsive ───────────────────────────────────── */
 @media (max-width: 768px) {
   .aup-nav { padding: 16px 20px; }
-  .aup-nav-links { display: none; }
   .aup-header { padding: 32px 20px 24px; }
   .aup-name { font-size: 1.8rem; }
   .aup-body { padding: 0 20px 60px; }

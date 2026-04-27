@@ -33,8 +33,8 @@ export const southeastCartelStability = {
         `Taken together, these factors suggest that the relative peace of the Yucatán Peninsula is not accidental. It is the result of a specific alignment between geography, economic policy, and governance. The region's value lies in its access to the Caribbean, not in the need for territorial domination. Its economy depends on stability, creating shared incentives to avoid disruption. Its institutions are comparatively stronger, reducing the likelihood of fragmentation and conflict. Federal policy, in this case, has reinforced rather than undermined these dynamics.`,
         `This does not mean the region is immune to change. Increased competition among criminal groups, shifts in federal strategy, or changes in economic conditions could alter the status quo. Expanding infrastructure and connectivity may also increase the peninsula's strategic importance by potentially introducing new pressures. The absence of violence today reflects a historical set of conditions, not a permanent state.`,
         `What the Yucatán Peninsula ultimately demonstrates is that cartel presence alone does not determine levels of violence. Instead, violence emerges from the interaction between strategic incentives, economic structures, and policy decisions. In the case of the peninsula, those factors align in a way that discourages open conflict. The result is not the absence of organized crime, but a form of stability shaped by how and why that crime operates.`,
+        { image: '/images/southeast-yucatan-cartel.png' },
       ],
-      imageAfterParagraph: { 2: '/images/Yucatan Cartel.png' } as Record<number, string>,
     },
   ],
 };

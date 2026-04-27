@@ -18,8 +18,8 @@ export const southeastYucatan = {
       paragraphs: [
         `The contrast between Yucatán and Quintana Roo highlights one of the clearest regional divides observed in Mexico's security landscape. These neighboring states share geography, climate, and cultural identities, both being part of the Yucatán Peninsula. However, their outcomes regarding instances of crime differ sharply. Yucatán, especially Mérida, is widely considered one of the safest regions in the country, while Quintana Roo has faced rising levels of violent crime in recent years. This gap reflects deeper structural differences in geography, governance, social cohesion, and economic organization that shape how crime develops and where it concentrates.`,
         `${a('Available data', YUCATAN_MAGAZINE_CRIME)} consistently supports Yucatán's reputation for its safety. In fact, Mérida has one of the lowest crime rates in Mexico, with roughly 100 crimes per 100,000 residents compared to the national average, which is over 600 per 100,000. ${a('The state\'s homicide rate', SAGEPUB_YUCATAN)} has also remained extremely low (around 2.5 per 100,000) even during periods when violence increased across much of the country. In contrast, Quintana Roo has experienced a steady rise in violent crime, ${a('including higher rates of homicide', MEXICO_DAILY_POST)} and organized criminal activity in areas tied to tourism. These differences raise an important question: Why do two adjacent, similar Mexican states experience such different outcomes regarding violence?`,
+        { image: '/images/southeast-yucatan-crime-rates.png' },
       ],
-      imageAfterParagraph: { 1: '/images/Screenshot 2026-04-22 at 12.38.53 PM.png' } as Record<number, string>,
     },
     {
       paragraphs: [

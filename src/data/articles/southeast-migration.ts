@@ -65,8 +65,8 @@ export const southeastMigration = {
       paragraphs: [
         `The limited migration to the Yucatán Peninsula is not a result of its lack of opportunity or safety. Instead, it reflects the undulating demands of the migration system. Geography, infrastructure, and social networks shape migration routes in ways that reinforce existing pathways and exclude others.`,
         `The Yucatán remains peripheral not because it is undesirable, but because it is disconnected from the systems that enable migration. Recognizing this helps to explain broader patterns of migration through Mexico and to understand the labor and demographic makeup of the region itself.`,
+        { image: '/images/southeast-migration-yucatan.png' },
       ],
-      imageAfterParagraph: { 1: '/images/Migration Yucatan.png' } as Record<number, string>,
     },
   ],
 };

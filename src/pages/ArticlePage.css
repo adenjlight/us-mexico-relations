@@ -50,24 +50,6 @@
 
 .ap-nav-logo span { color: var(--gold); }
 
-.ap-nav-links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-  padding: 0; margin: 0;
-}
-
-.ap-nav-links a {
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.ap-nav-links a:hover { color: var(--cream); }
-
 /* ── Article header ───────────────────────────────── */
 .ap-header {
   padding: 9rem 3rem 0;
@@ -98,30 +80,6 @@
 
 .ap-back-link:hover svg { transform: translateX(-3px); }
 
-.ap-meta-bar {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.75rem;
-}
-
-.ap-region-badge {
-  padding: 0.35rem 0.85rem;
-  border-radius: 100px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--gold-light);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.ap-date {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  letter-spacing: 0.03em;
-}
-
 .ap-header h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.2rem, 5vw, 3.2rem);
@@ -149,17 +107,6 @@
   border-left: 2px solid var(--gold);
   padding: 0.75rem 1.25rem;
   margin: 1.25rem 0 0;
-}
-
-.ap-lede {
-  font-family: 'Lora', serif;
-  font-size: 1.2rem;
-  line-height: 1.75;
-  color: var(--text-light);
-  font-style: italic;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin: 0;
 }
 
 /* ── Article body ─────────────────────────────────── */
@@ -289,31 +236,6 @@
   text-align: right;
   letter-spacing: 0.02em;
   z-index: 2;
-}
-
-/* Pull stat */
-.ap-pull-stat {
-  margin: 3rem 0;
-  padding: 2.5rem;
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-.ap-pull-number {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: var(--terracotta);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
-.ap-pull-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
 }
 
 /* ── Article end ──────────────────────────────────── */

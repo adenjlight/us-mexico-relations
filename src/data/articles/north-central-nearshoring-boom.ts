@@ -9,8 +9,8 @@ export const northCentralNearshoringBoom = {
       paragraphs: [
         `The rise of the Bajío is often framed as a regional success story of development. Guanajuato, in particular, has built a strong industrial base centered on automotive manufacturing and export-oriented production. This raises a key question: To what extent is this growth the result of deliberate industrial policy, and to what extent is it driven by larger structural forces like trade agreements and global supply chain shifts?`,
         `Guanajuato's industrial policy clearly played a role in shaping the region's development. The state pursued a targeted strategy focused on attracting foreign investment, especially in the automotive sector. It invested in industrial parks, coordinated with multinational firms, and supported workforce training. Over time, this created a dense industrial cluster, where suppliers and manufacturers became closely integrated. This clustering effect reinforced itself, making the region more attractive to additional investment as firms followed existing supply chains (Martínez-Martínez and Carrillo-Viveros). Once major firms established operations, supporting industries followed, deepening regional specialization.`,
+        { image: '/images/north-central-nearshoring-boom-1.png' },
       ],
-      imageAfterParagraph: { 1: '/images/boom 1.png' } as Record<number, string>,
     },
     {
       paragraphs: [
@@ -19,8 +19,8 @@ export const northCentralNearshoringBoom = {
         `At the same time, NAFTA created long-term structural changes in Mexico's economy. It helped shift production toward manufacturing exports while weakening other sectors, particularly agriculture. Over time, this reinforced a development model centered on integration with U.S. supply chains rather than domestic growth. However, the results of that integration have been uneven. Despite deeper trade ties, Mexico's long-term growth has remained relatively weak compared to the rest of Latin America, with per capita GDP growing only 18.6% over two decades and poverty levels remaining largely unchanged (Weisbrot et al. 1). This shows that integration created opportunities, but those opportunities were not evenly distributed and did not automatically translate into broad economic development.`,
         `Global supply chain dynamics add another layer to this process. Firms have increasingly moved production closer to the United States to reduce risk and avoid disruptions. This shift accelerated after COVID-19 and rising geopolitical tensions, especially tensions between the United States and China. Nearshoring is not just a regional trend, it is a global restructuring of production. Mexico benefits from this shift because it already has an established manufacturing base and trade access to the U.S. market.`,
         `Melgar describes Mexico's current position as a "golden opportunity" created by nearshoring and changes in global supply chains (Melgar). The point is that this opportunity comes from external changes in how firms organize production and manage risk rather than exclusively from the result of regional policy. At the same time, Melgar also points out that this opportunity is conditional. It depends on national policies, especially energy policy and regulatory stability. Without reliable energy and supportive regulation, Mexico risks losing some of the benefits of nearshoring (Melgar). This reinforces the idea that regional success is tied to factors beyond local control. Even a well-developed industrial region like the Bajío depends on national and global conditions to sustain its growth.`,
+        { image: '/images/north-central-nearshoring-boom-2.png' },
       ],
-      imageAfterParagraph: { 4: '/images/boom 2 .png' } as Record<number, string>,
     },
     {
       paragraphs: [
