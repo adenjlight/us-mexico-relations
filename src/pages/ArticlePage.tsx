@@ -62,7 +62,7 @@ export default function ArticlePage() {
           <p className="ap-abstract">{article.abstract}</p>
         )}
         {article?.abstractImage && (
-          <div className="ap-image"><img src={article.abstractImage} alt="" /></div>
+          <div className="ap-image"><div className="ap-image-wrap"><img src={article.abstractImage} alt="" /></div></div>
         )}
       </header>
 
@@ -75,7 +75,9 @@ export default function ArticlePage() {
                 if (typeof block !== 'string') {
                   return (
                     <figure key={bi} className="ap-image" style={block.maxWidth ? { maxWidth: block.maxWidth, marginLeft: 'auto', marginRight: 'auto' } : undefined}>
-                      <img src={block.image} alt={block.caption ?? ''} />
+                      <div className="ap-image-wrap">
+                        <img src={block.image} alt={block.caption ?? ''} />
+                      </div>
                       {block.caption && <figcaption>{block.caption}</figcaption>}
                     </figure>
                   );

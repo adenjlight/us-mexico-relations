@@ -44,8 +44,7 @@ const authors: Author[] = [
   {
     name: 'Nico Schwartz',
     role: 'Contributor',
-    bio: null,
-    // bio: 'Paste Nico Schwartz\'s bio here.',
+    bio: 'Nico Schwartz is a Senior from Boston Massachusetts majoring in Political Science and minoring in Data Science.',
   },
   {
     name: 'Oliver Manko',
