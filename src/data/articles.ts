@@ -20,15 +20,15 @@ export interface Article {
 }
 
 import { northeastWater } from './articles/northeast-water';
+import { northeastIndustryTrade } from './articles/northeast-industry-trade';
+import { northeastNuevoLeonWater } from './articles/northeast-nuevo-leon-water';
 import { northwestClimate } from './articles/northwest-climate';
 import { northwestNearshoring } from './articles/northwest-nearshoring';
-import { northwestAgriculture } from './articles/northwest-agriculture';
 import { centralCorruption } from './articles/central-corruption';
 import { westCoastalAgriculture } from './articles/west-coastal-agriculture';
 import { westCriminalFragmentation } from './articles/west-criminal-fragmentation';
 import { southwestChiapas } from './articles/southwest-chiapas';
-import { southeastTourism } from './articles/southeast-tourism';
-import { southeastYucatan } from './articles/southeast-yucatan';
+import { southwestTourism } from './articles/southwest-tourism';
 import { southeastMigration } from './articles/southeast-migration';
 import { southeastCartelStability } from './articles/southeast-cartel-stability';
 import { northCentralFuelTheft } from './articles/north-central-fuel-theft';
@@ -36,12 +36,12 @@ import { northCentralNearshoringBoom } from './articles/north-central-nearshorin
 import { eastVeracruzPetrochemical } from './articles/east-veracruz-petrochemical';
 
 const articlesByRegion: Record<string, Article[]> = {
-  northeast: [northeastWater],
-  northwest: [northwestClimate, northwestNearshoring, northwestAgriculture],
+  northeast: [northeastWater, northeastIndustryTrade, northeastNuevoLeonWater],
+  northwest: [northwestClimate, northwestNearshoring],
   central: [centralCorruption],
   west: [westCoastalAgriculture, westCriminalFragmentation],
-  southwest: [southwestChiapas],
-  southeast: [southeastTourism, southeastYucatan, southeastMigration, southeastCartelStability],
+  southwest: [southwestChiapas, southwestTourism],
+  southeast: [southeastMigration, southeastCartelStability],
   'north-central': [northCentralFuelTheft, northCentralNearshoringBoom],
   east: [eastVeracruzPetrochemical],
 };
