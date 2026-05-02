@@ -14,8 +14,7 @@ const authors: Author[] = [
   {
     name: 'Aden Light',
     role: 'Co-Editor',
-    bio: null,
-    // bio: 'Paste Aden Light\'s bio here.',
+    bio: 'Aden Light is a senior at George Washington University. He is originally from Boca Raton, Florida, and studies Political Science and History.',
   },
   {
     name: 'Christopher Duarte',
