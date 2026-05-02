@@ -50,6 +50,17 @@ const podcasts: Record<string, Podcast> = {
     author: 'Daniel Davis',
     audioUrl: '/Audio/Daniel Davis Podcast PSC 3500.mp3',
   },
+  'north-central': {
+    title: 'Guanajuato Violence',
+    description: 'This episode explains why Guanajuato, one of the most important industrial states in Mexico and a key part of U.S.-Mexico supply chains, has also become one of the country\'s most violent places. It argues that rapid industrial growth did not remove cartel violence because Guanajuato\'s geography, pipelines, refinery infrastructure, and transport corridors made it valuable to both legal industry and organized crime. The episode focuses on the conflict between the Cártel Santa Rosa de Lima and the Cártel Jalisco Nueva Generación, showing how fuel theft, local drug markets, corruption, and territorial control all helped drive violence in the state. It also looks at how this conflict moved beyond remote infrastructure and into everyday commercial life, including attacks on local businesses tied to illicit markets. It presents and outlines Guanajuato as a state where industrial growth moved forward while cartel violence spread through the same space, driven by control over key infrastructure and markets.',
+    citations: [
+      'Nathan P. Jones and John P. Sullivan, "Huachicoleros: Criminal Cartels, Fuel Theft, and Violence in Mexico."',
+      'Tomás Andres Michael Carvallo, "Why Tire Repair Workshops Are the Target of a Wave of Violence in Guanajuato, Mexico."',
+      'U.S. Department of the Treasury, "Secretary Bessent Orders Sanctions Against Violent Mexican Cartel."',
+    ],
+    author: 'Oliver Manko',
+    audioUrl: '/Audio/Guanajuato Violence Podcast.m4a',
+  },
   west: {
     title: 'Cartel Fragmentation and Violence',
     description: 'This episode examines how cartel fragmentation has become a major driver of violence and displacement across Mexico\'s Pacific states.',

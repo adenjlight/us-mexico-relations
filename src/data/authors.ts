@@ -45,8 +45,7 @@ const authors: Author[] = [
   {
     name: 'Oliver Manko',
     role: 'Contributor',
-    bio: null,
-    // bio: 'Paste Oliver Manko\'s bio here.',
+    bio: 'Oliver Manko was born in New Jersey and raised in South Florida before continuing his education at The George Washington University\'s Columbian College of Arts and Sciences. Majoring in Political Science, he is expecting to graduate in May with the Class of 2026.',
   },
   {
     name: 'Sydney Sharpley',
